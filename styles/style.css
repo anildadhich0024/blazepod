@@ -9,7 +9,7 @@ div.a {
 #timer{
     position: fixed;
     text-align: center;
-    width: 63px;
+    width: 100px;
     z-index: 99999;
     top: 26px;
     right: 50%;
