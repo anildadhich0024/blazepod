@@ -56,7 +56,7 @@ function changeBallSource() {
 
 function makeBall(id, src) {
     var $div = $(
-        "<div class='a' id='" + id + "'><img height='120' width='120' src='" + src + "' />"
+        "<div class='a' id='" + id + "'><img height='150' width='150' src='" + src + "' />"
     );
     $(".animatedDivs").append($div);
     animateDiv();
@@ -89,15 +89,15 @@ function calcSpeed(prev, next) {
     var x = Math.abs(prev[1] - next[1]);
     var y = Math.abs(prev[0] - next[0]);
     var greatest = x > y ? x : y; 
-    var speedModifier = Math.random();
+    var speedModifier = .6; //Math.random();
     var speed = Math.ceil(greatest / speedModifier); 
-    return Math.floor(0 + Math.random() * Math.floor(Math.random() * 9000)) 
+    return speed //Math.floor(0 + Math.random() * Math.floor(Math.random() * 6000)) 
 }
  
 
 
 let timeObject = new Date();
-timeObject = new Date(timeObject.getTime() + 20000);
+timeObject = new Date(timeObject.getTime() + 60000);
 function countdown() { 
 	var now = new Date();    
 	var endDate = new Date(timeObject);	
