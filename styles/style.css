@@ -8,7 +8,7 @@ div.a {
 }  
 #timer{
     position: fixed;
-    /* height: 29px; */
+    text-align: center;
     width: 63px;
     z-index: 99999;
     top: 26px;
