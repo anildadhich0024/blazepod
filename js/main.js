@@ -30,9 +30,9 @@ $(document).on('click', '.a', function (e) {
     if(generateBallId == $(this).attr('id')) {
         console.log('clicked right');
         score+=1;
+        changeBallSource();
         $('.score span').html(score);
     } 
-    changeBallSource();
 });
 
 function changeBallSource() {
@@ -48,7 +48,7 @@ function changeBallSource() {
     makeBall('ball3', sourceImg[2]);
     makeBall('ball4', sourceImg[3]);
     makeBall('ball5', sourceImg[4]);
-    makeBall('ball6', sourceImg[5]); 
+    makeBall('ball6', sourceImg[5]);
     // var items   = new Array(2,3,4);
     // var ran = items.sort(function() { return 0.5 - Math.random();}).pop();
     // ran
