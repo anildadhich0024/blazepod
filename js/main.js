@@ -63,12 +63,12 @@ $(document).ready(function () {
 });
 
 $(document).on('click', '.a', function (e) { 
-    if($(this).attr('id')) {
-        //console.log('clicked right');
+    if(generateCorrectBallId() == $(this).attr('id')) {
+        console.log('clicked right');
         score+=1;
         changeBallSource();
         $('.score span').html(score);
-        //changeBallSource();
+        changeBallSource();
     } 
 });
 
@@ -83,20 +83,14 @@ function changeBallSource() {
 
     var randomIndex = items.sort(function() { return 0.5 - Math.random();}).pop();
     for(i=1; i<7; i++) {
-        ball_data = sourceImg[randomIndex-1].split("/");
         if(i==correctId && !storedIndex) {
-            //correctId = randomIndex;
+            correctId = randomIndex;
             storedIndex = true;
             $('.a').removeClass('top');
+            $('#ball' + correctId).addClass('top');
         }
         $('#ball' + i + ' img').attr('src', sourceImg[randomIndex-1]); 
-        if(correctId == 1 && ball_data[6] == 'blue.png') {
-            $('#ball' + i).addClass('top');
-        } 
-        if(correctId == 2 && ball_data[6] == 'red.png') {
-            $('#ball' + i).addClass('top');
-        }
-        //console.log("randomIndex: " +randomIndex +" and correctid: " + correctId + " and stored index: " + storedIndex + " and source image: " + sourceImg[randomIndex-1]); 
+        console.log("randomIndex: " +randomIndex +" and correctid: " + correctId + " and stored index: " + storedIndex + " and source image: " + sourceImg[randomIndex-1]); 
         randomIndex = items.sort(function() { return 0.5 - Math.random();}).pop();
     }  
 }
