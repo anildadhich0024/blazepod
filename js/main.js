@@ -1,5 +1,6 @@
 var correctId = 1;
 var score = 0;
+var continueBalls = true;
 sourceImg = [
     'https://stageofproject.com/blazepod/img/pod/blue.png',
     'https://stageofproject.com/blazepod/img/pod/red.png',
@@ -10,51 +11,90 @@ sourceImg = [
 ]
 
 $(document).ready(function () { 
-    makeBall('ball1', sourceImg[0]);
-    makeBall('ball2', sourceImg[1]);
-    makeBall('ball3', sourceImg[2]);
-    makeBall('ball4', sourceImg[3]);
-    makeBall('ball5', sourceImg[4]);
-    makeBall('ball6', sourceImg[5]); 
     var randomBoolean = Math.random() < 0.5;    
-    if(randomBoolean){
-        alert('Chase Blue ball');
+    if(randomBoolean){ 
+        Swal.fire({
+            title: 'Be Ready to Play!',
+            text: "Chase Blue ball",
+            icon: 'success',
+            showCancelButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Okay'
+        }).then((result) => {
+            if (result.value) {
+                makeBall('ball1', sourceImg[0], true);
+                makeBall('ball2', sourceImg[1]);
+                makeBall('ball3', sourceImg[2]);
+                makeBall('ball4', sourceImg[3]);
+                makeBall('ball5', sourceImg[4]);
+                makeBall('ball6', sourceImg[5]);  
+                
+                startTimer();
+            }
+        })        
     } else {
         correctId = 2;
-        alert('Chase Red ball');
-    }
+        Swal.fire({
+            title: 'Be Ready to Play!',
+            text: "Chase Red ball",
+            icon: 'success',
+            showCancelButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Okay'
+        }).then((result) => {
+            if (result.value) {
+                makeBall('ball1', sourceImg[0]);
+                makeBall('ball2', sourceImg[1], true);
+                makeBall('ball3', sourceImg[2]);
+                makeBall('ball4', sourceImg[3]);
+                makeBall('ball5', sourceImg[4]);
+                makeBall('ball6', sourceImg[5]);  
+                
+                startTimer();
+            }
+        })        
+    }        
 });
 
 $(document).on('click', '.a', function (e) { 
-    let generateBallId = 'ball' + correctId; 
-    if(generateBallId == $(this).attr('id')) {
+    if(generateCorrectBallId() == $(this).attr('id')) {
         console.log('clicked right');
         score+=1;
         $('.score span').html(score);
+        changeBallSource();
     } 
-    changeBallSource();
 });
 
-function changeBallSource() {
-    $('#ball1').remove();
-    $('#ball2').remove();
-    $('#ball3').remove();
-    $('#ball4').remove();
-    $('#ball5').remove();
-    $('#ball6').remove();
-
-    makeBall('ball1', sourceImg[0]);
-    makeBall('ball2', sourceImg[1]);
-    makeBall('ball3', sourceImg[2]);
-    makeBall('ball4', sourceImg[3]);
-    makeBall('ball5', sourceImg[4]);
-    makeBall('ball6', sourceImg[5]); 
-    // var items   = new Array(2,3,4);
-    // var ran = items.sort(function() { return 0.5 - Math.random();}).pop();
-    // ran
+function generateCorrectBallId() {
+    return 'ball' + correctId; 
 }
 
-function makeBall(id, src) {
+function changeBallSource() {
+    var items   = new Array(1,2,3,4,5,6); 
+    var storedIndex = false;
+    console.log(correctId);
+
+    var randomIndex = items.sort(function() { return 0.5 - Math.random();}).pop();
+    for(i=1; i<7; i++) {
+        if(i==correctId && !storedIndex) {
+            correctId = randomIndex;
+            storedIndex = true;
+            $('.a').removeClass('top');
+            $('#ball' + correctId).addClass('top');
+        }
+        $('#ball' + i + ' img').attr('src', sourceImg[randomIndex-1]); 
+        console.log("randomIndex: " +randomIndex +" and correctid: " + correctId + " and stored index: " + storedIndex + " and source image: " + sourceImg[randomIndex-1]); 
+        randomIndex = items.sort(function() { return 0.5 - Math.random();}).pop();
+    }  
+}
+
+function makeBall(id, src, top = false) {
     var $div = $(
         "<div class='a' id='" + id + "'><img height='150' width='150' src='" + src + "' />"
     );
@@ -71,10 +111,15 @@ function makeBall(id, src) {
             },
             speed,
             function () {
-                animateDiv();
+                if(continueBalls) {
+                    animateDiv();
+                }
             }
         );
     }
+    if(top) { 
+        $('#' + id).addClass('top');
+    } 
 }
 
 function makeNewPosition() {
@@ -93,8 +138,6 @@ function calcSpeed(prev, next) {
     var speed = Math.ceil(greatest / speedModifier); 
     return speed //Math.floor(0 + Math.random() * Math.floor(Math.random() * 6000)) 
 }
- 
-
 
 let timeObject = new Date();
 timeObject = new Date(timeObject.getTime() + 60000);
@@ -108,6 +151,7 @@ function countdown() {
 		alert('Your Time is Over');
         clearInterval(interval); // stop the interval 
 		document.getElementById("milliseconds").textContent = "00";
+        continueBalls = false;
         return false;
 	}
 	// get time in ms/sec/min/hrs/days
@@ -134,6 +178,6 @@ function countdown() {
 
 // start clock on body load
 var interval = null; 
-document.body.onload =  function() {     
+function startTimer() {     
     interval = setInterval(countdown,100);
 };
