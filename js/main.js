@@ -1,4 +1,4 @@
-var correctId = 1;
+var correctId = 0;
 var score = 0;
 var continueBalls = true;
 sourceImg = [
@@ -25,18 +25,18 @@ $(document).ready(function () {
             confirmButtonText: 'Okay'
         }).then((result) => {
             if (result.value) {
-                makeBall('ball1', sourceImg[0], true);
-                makeBall('ball2', sourceImg[1]);
-                makeBall('ball3', sourceImg[2]);
-                makeBall('ball4', sourceImg[3]);
-                makeBall('ball5', sourceImg[4]);
-                makeBall('ball6', sourceImg[5]);  
+                makeBall('ball0', sourceImg[0], true);
+                makeBall('ball1', sourceImg[1]);
+                makeBall('ball2', sourceImg[2]);
+                makeBall('ball3', sourceImg[3]);
+                makeBall('ball4', sourceImg[4]);
+                makeBall('ball5', sourceImg[5]);  
                 
                 startTimer();
             }
         })        
     } else {
-        correctId = 2;
+        correctId = 1;
         Swal.fire({
             title: 'Be Ready to Play!',
             text: "Chase Red ball",
@@ -49,12 +49,12 @@ $(document).ready(function () {
             confirmButtonText: 'Okay'
         }).then((result) => {
             if (result.value) {
-                makeBall('ball1', sourceImg[0]);
-                makeBall('ball2', sourceImg[1], true);
-                makeBall('ball3', sourceImg[2]);
-                makeBall('ball4', sourceImg[3]);
-                makeBall('ball5', sourceImg[4]);
-                makeBall('ball6', sourceImg[5]);  
+                makeBall('ball0', sourceImg[0]);
+                makeBall('ball1', sourceImg[1], true);
+                makeBall('ball2', sourceImg[2]);
+                makeBall('ball3', sourceImg[3]);
+                makeBall('ball4', sourceImg[4]);
+                makeBall('ball5', sourceImg[5]);  
                 
                 startTimer();
             }
@@ -63,8 +63,7 @@ $(document).ready(function () {
 });
 
 $(document).on('click', '.a', function (e) { 
-    if(generateCorrectBallId() == $(this).attr('id')) {
-        console.log('clicked right');
+    if(generateCorrectBallId() == $(this).attr('id')) { 
         score+=1;
         $('.score span').html(score);
         changeBallSource();
@@ -76,22 +75,32 @@ function generateCorrectBallId() {
 }
 
 function changeBallSource() {
-    var items   = new Array(1,2,3,4,5,6); 
-    var storedIndex = false;
-    console.log(correctId);
+    var correctBallImgSrc = $('#ball' + correctId + ' img').attr('src');  
+    var items = new Array(0,1,2,3,4,5); 
+    shuffle(items);
 
-    var randomIndex = items.sort(function() { return 0.5 - Math.random();}).pop();
-    for(i=1; i<7; i++) {
-        if(i==correctId && !storedIndex) {
-            correctId = randomIndex;
-            storedIndex = true;
+    for(i=0; i<6; i++) {
+        $('#ball' + i + ' img').attr('src', sourceImg[items[i]]);
+        if($('#ball' + i + ' img').attr('src') == correctBallImgSrc) {
             $('.a').removeClass('top');
-            $('#ball' + correctId).addClass('top');
+            $('#ball' + i).addClass('top');
+            correctId = i;
         }
-        $('#ball' + i + ' img').attr('src', sourceImg[randomIndex-1]); 
-        console.log("randomIndex: " +randomIndex +" and correctid: " + correctId + " and stored index: " + storedIndex + " and source image: " + sourceImg[randomIndex-1]); 
-        randomIndex = items.sort(function() { return 0.5 - Math.random();}).pop();
-    }  
+    }
+}
+
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {  
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;  
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+    return array;
 }
 
 function makeBall(id, src, top = false) {
@@ -140,15 +149,16 @@ function calcSpeed(prev, next) {
 }
 
 let timeObject = new Date();
-timeObject = new Date(timeObject.getTime() + 60000);
+timeObject = new Date(timeObject.getTime() + 20000);
 function countdown() { 
 	var now = new Date();    
 	var endDate = new Date(timeObject);	
 	
 	var currentTime = now.getTime();
 	var deltaTime = endDate - currentTime; 
-	if(deltaTime<=100 && deltaTime>=-100) {
-		alert('Your Time is Over');
+	if(deltaTime<=100 && deltaTime>=-100) { 
+        $('span.scores').html(score);
+        $('#exampleModal').modal({'show': true, 'backdrop': 'static', 'keyboard': false});
         clearInterval(interval); // stop the interval 
 		document.getElementById("milliseconds").textContent = "00";
         continueBalls = false;

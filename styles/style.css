@@ -22,8 +22,8 @@ div.a {
 #timer{
     position: fixed;
     text-align: center;
-    width: 100px;
-    z-index: 99999;
+    width: 140px;
+    z-index: 999;
     top: 20px;
     right: 50%;
     transform: translate(50%,-50%);
