@@ -23,7 +23,7 @@
             <span id="seconds">00 : </span>
             <span id="milliseconds">00</span>
         </div>	  
-        <div class="score">	Score: <span>0</span> </div>
+        <!-- <div class="score">	Score: <span>0</span> </div> -->
 	</div> 
     <div class="animatedDivs"></div>
 
@@ -35,17 +35,19 @@
             <div class="modal-body">
                <h5 class="mb-4">Thank you for participating, your score is <span class="scores"> </span></h5> 
                 <form method="post" action="post.php">
+                    <input type="hidden" name="final_score" id="final_score" value="">
+                    <input type="hidden" name="pod_name" id="pod_name" value="">
                     <div class="form-group">
                         <label for="inputName">Name</label>
-                        <input type="text" class="form-control" required id="inputName" name="username" placeholder="Enter Name"> 
+                        <input type="text" class="form-control" required id="inputName" name="full_name" placeholder="Enter Name"> 
                       </div>
                       <div class="form-group">
                         <label for="inputEmail">Email address</label>
-                        <input type="email" class="form-control" required id="inputEmail" name="useremail" placeholder="Enter email"> 
+                        <input type="email" class="form-control" required id="inputEmail" name="email_address" placeholder="Enter email"> 
                       </div>
                       <div class="form-group">
                         <label for="inputPhone">Phone Number</label>
-                        <input type="tel" pattern="[0-9]{10}" required title="10 digits required" name="userphone" class="form-control" id="inputPhone" placeholder="Enter Phone number"> 
+                        <input type="tel" pattern="[0-9]{10}" required title="10 digits required" name="mobile_number" class="form-control" id="inputPhone" placeholder="Enter Phone number"> 
                       </div>
                       <button class="btn btn-success" type="submit">Submit</button>
                 </form>
