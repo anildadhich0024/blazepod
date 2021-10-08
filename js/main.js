@@ -68,6 +68,7 @@ $(document).on('click', '.a', function (e) {
     if(generateCorrectBallId() == $(this).attr('id')) { 
         score+=1;
         changeBallSource();
+        last_click_time = $('#seconds').html()+''+$('#milliseconds').html();
         $('.score span').html(score);
         changeBallSource();
     } 
@@ -161,6 +162,7 @@ function countdown() {
         $('span.scores').html(score);
         $('#final_score').val(btoa(score));
         $('#pod_name').val(btoa(ballName));
+        $('#last_click_time').val(btoa(last_click_time));
         $('#exampleModal').modal({'show': true, 'backdrop': 'static', 'keyboard': false});
         clearInterval(interval); // stop the interval 
 		document.getElementById("milliseconds").textContent = "00";

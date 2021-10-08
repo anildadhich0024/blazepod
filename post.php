@@ -8,11 +8,11 @@ if ($con -> connect_errno) {
   exit();
 } 
 
-$sql = "INSERT INTO user_submissions (full_name, email_address, mobile_number, final_score, pod_name)
-VALUES ('".$_POST['full_name']."', '".$_POST['email_address']."', '".$_POST['mobile_number']."', '".base64_decode($_POST['final_score'])."', '".base64_decode($_POST['pod_name'])."')";
+$sql = "INSERT INTO user_submissions (full_name, email_address, mobile_number, final_score, pod_name, last_click_time)
+VALUES ('".$_POST['full_name']."', '".$_POST['email_address']."', '".$_POST['mobile_number']."', '".base64_decode($_POST['final_score'])."', '".base64_decode($_POST['pod_name'])."', '".base64_decode($_POST['last_click_time'])."')";
 
 if (mysqli_query($con, $sql)) {
-  echo '<script>window.location.href= "https://www.google.com"</script>';
+  echo '<script>window.location.href= "result.php"</script>';
 } else {
   echo "Error: " . $sql . "<br>" . mysqli_error($con);
 } 
