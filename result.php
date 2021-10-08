@@ -34,14 +34,21 @@
                </thead>
                <tbody>
                 <?php
-                    while($record = $red_chase->fetch_array(MYSQLI_ASSOC))
+                    if(mysqli_num_rows($red_chase) > 0)
                     {
+                        while($record = $red_chase->fetch_array(MYSQLI_ASSOC))
+                        {
                 ?>
-                    <tr>
-                        <td><?=$record['full_name']?></td>
-                        <td><?=$record['mobile_number']?></td>
-                        <td><?=$record['final_score']?></td>
-                    </tr>
+                        <tr>
+                            <td><?=$record['full_name']?></td>
+                            <td><?=$record['mobile_number']?></td>
+                            <td><?=$record['final_score']?></td>
+                        </tr>
+                <?php
+                        }
+                    } else {
+                ?>
+                    <tr><td colspan="3" class="text-center"><strong>No record found</strong></td></tr>
                 <?php
                     }
                 ?>
@@ -62,14 +69,21 @@
        </thead>
        <tbody>
        <?php
-            while($record = $blue_chase->fetch_array(MYSQLI_ASSOC))
+            if(mysqli_num_rows($blue_chase) > 0)
             {
+                while($record = $blue_chase->fetch_array(MYSQLI_ASSOC))
+                {
         ?>
-            <tr>
-                <td><?=$record['full_name']?></td>
-                <td><?=$record['mobile_number']?></td>
-                <td><?=$record['final_score']?></td>
-            </tr>
+                <tr>
+                    <td><?=$record['full_name']?></td>
+                    <td><?=$record['mobile_number']?></td>
+                    <td><?=$record['final_score']?></td>
+                </tr>
+        <?php
+                }
+            } else {
+        ?>
+            <tr><td colspan="3" class="text-center"><strong>No record found</strong></td></tr>
         <?php
             }
         ?>
