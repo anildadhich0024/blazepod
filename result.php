@@ -28,7 +28,6 @@
                  <thead>
                     <tr>
                        <th>Name</th>
-                       <th>Mobile Number</th>
                        <th>Score</th>
                        <th>Time</th>
                    </tr>
@@ -42,7 +41,6 @@
                 ?>
                         <tr>
                             <td><?=$record['full_name']?></td>
-                            <td><?=$record['mobile_number']?></td>
                             <td><?=$record['final_score']?></td>
                             <td><?=$record['last_click_time']?></td>
                         </tr>
@@ -65,7 +63,6 @@
          <thead>
             <tr>
                <th>Name</th>
-               <th>Mobile Number</th>
                <th>Score</th>
                <th>Time</th>
            </tr>
@@ -79,7 +76,6 @@
         ?>
                 <tr>
                     <td><?=$record['full_name']?></td>
-                    <td><?=$record['mobile_number']?></td>
                     <td><?=$record['final_score']?></td>
                     <td><?=$record['last_click_time']?></td>
                 </tr>
