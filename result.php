@@ -15,8 +15,8 @@
 </head>
 <?php
     $con = new mysqli('localhost', 'stageofp_blazepod', '2WJD=j))0SdK', 'stageofp_game');
-    $blue_chase = $con->query("Select * from user_submissions WHERE pod_name = 'BLUE' ORDER BY final_score DESC, last_click_time DESC");
-    $red_chase = $con->query("Select * from user_submissions WHERE pod_name = 'RED' ORDER BY final_score DESC, last_click_time DESC");
+    $blue_chase = $con->query("Select * from user_submissions WHERE pod_name = 'BLUE' ORDER BY last_click_time ASC, final_score DESC");
+    $red_chase = $con->query("Select * from user_submissions WHERE pod_name = 'RED' ORDER BY last_click_time ASC, final_score DESC");
 ?>
 <body>
   <div class="container mb-3">
@@ -30,6 +30,7 @@
                        <th>Name</th>
                        <th>Mobile Number</th>
                        <th>Score</th>
+                       <th>Time</th>
                    </tr>
                </thead>
                <tbody>
@@ -43,6 +44,7 @@
                             <td><?=$record['full_name']?></td>
                             <td><?=$record['mobile_number']?></td>
                             <td><?=$record['final_score']?></td>
+                            <td><?=$record['last_click_time']?></td>
                         </tr>
                 <?php
                         }
@@ -65,6 +67,7 @@
                <th>Name</th>
                <th>Mobile Number</th>
                <th>Score</th>
+               <th>Time</th>
            </tr>
        </thead>
        <tbody>
@@ -78,6 +81,7 @@
                     <td><?=$record['full_name']?></td>
                     <td><?=$record['mobile_number']?></td>
                     <td><?=$record['final_score']?></td>
+                    <td><?=$record['last_click_time']?></td>
                 </tr>
         <?php
                 }
