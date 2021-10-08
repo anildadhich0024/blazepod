@@ -9,8 +9,15 @@ if ($con -> connect_errno) {
 } 
 
 $time = explode(' : ',base64_decode($_POST['last_click_time']));
-$last_second = abs(20 - $time[0]) == 20 ? 00 : abs(20 - $time[0]);
-$last_mili_second = abs(60 - $time[1]) == 60 ? 00 : abs(60 - $time[0]);
+$last_second = abs(20 - $time[0]) - 1;
+$last_mili_second = abs(60 - $time[1]);
+
+
+if($last_second == 0 && $last_mili_second == 0) {
+  $last_second = 20;
+  $last_mili_second = 0;
+
+}
 
 $last_click_time = str_pad($last_second, 2, '0', STR_PAD_LEFT).' : '.str_pad($last_mili_second, 2, '0', STR_PAD_LEFT);
 $sql = "INSERT INTO user_submissions (full_name, email_address, mobile_number, final_score, pod_name, last_click_time)

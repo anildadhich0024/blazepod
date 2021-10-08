@@ -15,8 +15,8 @@
 </head>
 <?php
     $con = new mysqli('localhost', 'stageofp_blazepod', '2WJD=j))0SdK', 'stageofp_game');
-    $blue_chase = $con->query("Select * from user_submissions WHERE pod_name = 'BLUE' ORDER BY last_click_time ASC, final_score DESC");
-    $red_chase = $con->query("Select * from user_submissions WHERE pod_name = 'RED' ORDER BY last_click_time ASC, final_score DESC");
+    $blue_chase = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score from user_submissions WHERE pod_name = 'BLUE' ORDER BY score DESC, last_click_time ASC");
+    $red_chase = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score from user_submissions WHERE pod_name = 'RED' ORDER BY score DESC, last_click_time ASC");
 ?>
 <body>
   <div class="container mb-3">

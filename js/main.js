@@ -70,7 +70,7 @@ $(document).on('click', '.a', function (e) {
         changeBallSource();
         last_click_time = $('#seconds').html()+''+$('#milliseconds').html();
         $('.score span').html(score);
-        changeBallSource();
+        //changeBallSource();
     } 
 });
 
@@ -79,8 +79,10 @@ function generateCorrectBallId() {
 }
 
 function changeBallSource() {
-    var correctBallImgSrc = $('#ball' + correctId + ' img').attr('src');  
-    var items = new Array(0,1,2,3,4,5); 
+    var correctBallImgSrc = $('#ball' + correctId + ' img').attr('src'); 
+    for (var a=[],i=0;i<6;++i) a[i]=i;
+    var items = shuffle_array(a);
+    //alert(items);
     shuffle(items);
 
     for(i=0; i<6; i++) {
@@ -92,6 +94,17 @@ function changeBallSource() {
         }
     }
 }
+
+function shuffle_array(array) {
+    var tmp, current, top = array.length;
+    if(top) while(--top) {
+      current = Math.floor(Math.random() * (top + 1));
+      tmp = array[current];
+      array[current] = array[top];
+      array[top] = tmp;
+    }
+    return array;
+  }
 
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;  
@@ -147,7 +160,7 @@ function calcSpeed(prev, next) {
     var x = Math.abs(prev[1] - next[1]);
     var y = Math.abs(prev[0] - next[0]);
     var greatest = x > y ? x : y; 
-    var speedModifier = .2; //Math.random();
+    var speedModifier = .5; //Math.random();
     var speed = Math.ceil(greatest / speedModifier); 
     return speed //Math.floor(0 + Math.random() * Math.floor(Math.random() * 6000)) 
 }
