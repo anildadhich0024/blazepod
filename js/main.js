@@ -108,7 +108,7 @@ function shuffle(array) {
 
 function makeBall(id, src, top = false) {
     var $div = $(
-        "<div class='a' id='" + id + "'><img height='150' width='150' src='" + src + "' />"
+        "<div class='a' id='" + id + "'><img draggable='false' height='150' width='150' src='" + src + "' />"
     );
     $(".animatedDivs").append($div);
     animateDiv();
@@ -150,16 +150,14 @@ function calcSpeed(prev, next) {
     var speed = Math.ceil(greatest / speedModifier); 
     return speed //Math.floor(0 + Math.random() * Math.floor(Math.random() * 6000)) 
 }
-
-let timeObject = new Date();
-timeObject = new Date(timeObject.getTime() + 60000);
-function countdown() { 
+let timeObject = "";
+function countdown() {
 	var now = new Date();    
 	var endDate = new Date(timeObject);	
 	
 	var currentTime = now.getTime();
 	var deltaTime = endDate - currentTime; 
-	if(deltaTime<=100 && deltaTime>=-100) { 
+	if(deltaTime<=100 && deltaTime>=-10000) { 
         $('span.scores').html(score);
         $('#final_score').val(btoa(score));
         $('#pod_name').val(btoa(ballName));
@@ -168,31 +166,34 @@ function countdown() {
 		document.getElementById("milliseconds").textContent = "00";
         continueBalls = false;
         return false;
-	}
-	// get time in ms/sec/min/hrs/days
-	var ms = Math.floor(deltaTime % 60);
-	var s = Math.floor(deltaTime / 1000); 
-	s %= 60;	
-
-	// Get only work days 
-	var weeks = Math.floor(d / 7); //how many weeks
-	var d = d - weeks * 2;
-	
-	// set text in browser table
-	if (d<=0 && h<=0 && m<=0 && s<=0) { 
-		document.getElementById("seconds").textContent = "00 : ";
-		document.getElementById("milliseconds").textContent = "00";
-		clearInterval(countdown);
 	} else {
-		// add 0 to keep double digits time style 
-		s = (s < 10) ? "0" + s : s; 
-		document.getElementById("seconds").textContent = s + " : ";
-		document.getElementById("milliseconds").textContent = ms;
-    }
+        // get time in ms/sec/min/hrs/days
+        var ms = Math.floor(deltaTime % 60);
+        var s = Math.floor(deltaTime / 1000); 
+        s %= 60;	
+
+        // Get only work days 
+        var weeks = Math.floor(d / 7); //how many weeks
+        var d = d - weeks * 2;
+        
+        // set text in browser table
+        if (d<=0 && h<=0 && m<=0 && s<=0) { 
+            document.getElementById("seconds").textContent = "00 : ";
+            document.getElementById("milliseconds").textContent = "00";
+            clearInterval(countdown);
+        } else {
+            // add 0 to keep double digits time style 
+            s = (s < 10) ? "0" + s : s; 
+            document.getElementById("seconds").textContent = s + " : ";
+            document.getElementById("milliseconds").textContent = ms;
+        }
+    }	
 } 
 
 // start clock on body load
 var interval = null; 
-function startTimer() {     
+function startTimer() {    
+    timeObject = new Date();
+    timeObject = new Date(timeObject.getTime() + 20000); 
     interval = setInterval(countdown,100);
 };
