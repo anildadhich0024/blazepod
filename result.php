@@ -102,6 +102,46 @@ div#finish img {
 
 }
 
+.home_sec {
+
+    padding: 5px 30px;
+
+    position: absolute;
+
+}
+
+.home_sec img {
+
+    width: 40px;
+
+        filter: invert(1);
+
+}
+
+.back_img {
+
+    background: url(./../blazepod/img/pod/dark.png)center center;
+
+    background-size: cover;
+
+       position: absolute;
+
+    text-align: center;
+
+    width: 100%;
+
+}
+
+.back_img h3 {
+
+    color: #fff;
+
+}
+
+
+
+
+
 
 
 
@@ -139,6 +179,24 @@ $red_chase = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score from 
 ?>
 
 <body>
+
+
+
+<div class="back_img">
+
+
+
+
+
+<div class="home_sec"> 
+
+<a href="index.html">
+
+  <img src="https://stageofproject.com/blazepod/img/pod/home.png">
+
+</a>
+
+</div>
 
 
 
@@ -331,6 +389,10 @@ $red_chase = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score from 
 </div>
 
 <a class="load_more" href="index.html"> Go to Home Page </a>
+
+</div>
+
+
 
 </div>
 
