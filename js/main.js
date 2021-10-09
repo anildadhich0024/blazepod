@@ -1,6 +1,7 @@
 var correctId = 0;
 var score = 0;
 var continueBalls = true;
+var lastClick = 0;
 sourceImg = [
     'https://stageofproject.com/blazepod/img/pod/blue.png',
     'https://stageofproject.com/blazepod/img/pod/red.png',
@@ -67,6 +68,12 @@ $(document).on('click', '.a', function (e) {
         score+=1;
         $('.score span').html(score);
         changeBallSource();
+
+        var now = new Date();    
+        var endDate = new Date(timeObject);	        
+        var currentTime = now.getTime();
+        var deltaTime = endDate - currentTime;  
+        lastClick = totalTime - deltaTime; 
     } 
 });
 
@@ -187,8 +194,9 @@ function countdown() {
 
 // start clock on body load
 var interval = null; 
+var totalTime = 20000;
 function startTimer() {    
     timeObject = new Date();
-    timeObject = new Date(timeObject.getTime() + 20000); 
+    timeObject = new Date(timeObject.getTime() + totalTime); 
     interval = setInterval(countdown,100);
 };
