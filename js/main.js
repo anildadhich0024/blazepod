@@ -4,8 +4,8 @@ var score = 0;
 
 var continueBalls = true;
 var ballName = 'BLUE';
-
 var lastClick = 0;
+var finalTime = '00 : 00';
 sourceImg = [
 
     'https://stageofproject.com/blazepod/img/pod/blue.png',
@@ -349,15 +349,9 @@ function countdown() {
         var s = Math.floor(lastClick / 1000); 
 
         s %= 60;
-
-        $('span.scores').html(score);
-
-        $('#final_score').val(btoa(score));
-
-        $('#pod_name').val(btoa(ballName));
-
-        $('#last_click_time').val(btoa(s+' : '+ms));
-        $('span.last_click').html(s+' : '+ms);
+        var finalTime = s+' : '+ms;
+        
+        $('span.last_click').html(finalTime);
 
         $('#exampleModal').modal({'show': true, 'backdrop': 'static', 'keyboard': false});
 
@@ -429,3 +423,20 @@ function startTimer() {
 
 };
 
+
+$(document).ready(function(){
+    $(".btn-success").click(function(){  
+        if($("input[name=full_name]").val() == '') {
+            alert("Please provide your full name");
+            return false;
+        }  
+        if($("input[name=email_address]").val() == '') {
+            alert("Please provide your email address");
+            return false;
+        }      
+        $('#final_score').val(btoa(score));
+        $('#pod_name').val(btoa(ballName));
+        $('#last_click_time').val(btoa(finalTime));
+        $('#data_form').submit();
+    });
+});
