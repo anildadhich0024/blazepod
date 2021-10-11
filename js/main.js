@@ -1,7 +1,5 @@
-var correctId = 0;
-
+var correctId = getCookie();
 var score = 0;
-
 var continueBalls = true;
 var ballName = 'BLUE';
 var lastClick = 0;
@@ -22,13 +20,33 @@ sourceImg = [
 
 ]
 
-
+function getCookie(name = 'POD_NAME') {
+    // Split cookie string and get all individual name=value pairs in an array
+    var cookieArr = document.cookie.split(";");
+    
+    // Loop through the array elements
+    for(var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+        
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
+        if(name == cookiePair[0].trim()) {
+            // Decode the cookie value and return
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+    
+    // Return null if not found
+    return null;
+}
 
 $(document).ready(function () { 
-
-    var randomBoolean = Math.random() < 0.5;    
-
-    if(randomBoolean){ 
+    
+    // alert(correctId);
+    // if(correctId != 0 || correctId != 1) {
+    //     window.location="index.php";
+    // }
+    if(correctId == 0){ 
 
         Swal.fire({
 
@@ -351,10 +369,11 @@ function countdown() {
         s %= 60;
         var finalTime = s+' : '+ms;
         
+        $('span.scores').html(score);
         $('span.last_click').html(finalTime);
-
+        
         $('#exampleModal').modal({'show': true, 'backdrop': 'static', 'keyboard': false});
-
+        //document.cookie = "POD_NAME=";
         clearInterval(interval); // stop the interval 
 
 		document.getElementById("milliseconds").textContent = "00";
