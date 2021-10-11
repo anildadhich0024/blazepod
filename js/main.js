@@ -3,9 +3,9 @@ var correctId = 0;
 var score = 0;
 
 var continueBalls = true;
-
 var ballName = 'BLUE';
 
+var lastClick = 0;
 sourceImg = [
 
     'https://stageofproject.com/blazepod/img/pod/blue.png',
@@ -138,12 +138,11 @@ $(document).on('click', '.a', function (e) {
 
         changeBallSource();
 
-        last_click_time = $('#seconds').html()+''+$('#milliseconds').html();
-
-        $('.score span').html(score);
-
-        //changeBallSource();
-
+        var now = new Date();    
+        var endDate = new Date(timeObject);	        
+        var currentTime = now.getTime();
+        var deltaTime = endDate - currentTime;  
+        lastClick = totalTime - deltaTime; 
     } 
 
 });
@@ -345,6 +344,11 @@ function countdown() {
 	var deltaTime = endDate - currentTime; 
 
 	if(deltaTime<=100 && deltaTime>=-10000) { 
+        var ms = Math.floor(lastClick % 60);
+
+        var s = Math.floor(lastClick / 1000); 
+
+        s %= 60;
 
         $('span.scores').html(score);
 
@@ -352,7 +356,8 @@ function countdown() {
 
         $('#pod_name').val(btoa(ballName));
 
-        $('#last_click_time').val(btoa(last_click_time));
+        $('#last_click_time').val(btoa(s+' : '+ms));
+        $('span.last_click').html(s+' : '+ms);
 
         $('#exampleModal').modal({'show': true, 'backdrop': 'static', 'keyboard': false});
 
@@ -415,13 +420,11 @@ function countdown() {
 // start clock on body load
 
 var interval = null; 
-
+var totalTime = 20000;
 function startTimer() {    
 
     timeObject = new Date();
-
-    timeObject = new Date(timeObject.getTime() + 20000); 
-
+    timeObject = new Date(timeObject.getTime() + totalTime); 
     interval = setInterval(countdown,100);
 
 };
