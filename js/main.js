@@ -161,6 +161,13 @@ $(document).on('click', '.a', function (e) {
         var currentTime = now.getTime();
         var deltaTime = endDate - currentTime;  
         lastClick = totalTime - deltaTime; 
+
+        var ms = Math.floor(lastClick % 60);
+
+        var s = Math.floor(lastClick / 1000); 
+
+        s %= 60;
+        finalTime = s+' : '+ms;
     } 
 
 });
@@ -362,12 +369,6 @@ function countdown() {
 	var deltaTime = endDate - currentTime; 
 
 	if(deltaTime<=100 && deltaTime>=-10000) { 
-        var ms = Math.floor(lastClick % 60);
-
-        var s = Math.floor(lastClick / 1000); 
-
-        s %= 60;
-        var finalTime = s+' : '+ms;
         
         $('span.scores').html(score);
         $('span.last_click').html(finalTime);
