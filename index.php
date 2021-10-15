@@ -251,92 +251,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="container mb-3">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 mt-3">
-                        <h3 class="text-center"><span style="color:red;"> Red </span> Ball Chase</h3>
-                        <div class="blue_ball">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>User Name</th>
-                                        <th>Score</th>
-                                        <th>Time</th>
-                                        <th>Position</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        if(mysqli_num_rows($red_chase) > 0)
-                                        {
-                                            $i = 1;
-                                            while($record = $red_chase->fetch_array(MYSQLI_ASSOC))
-                                            {
-                                                ?>
-                                    <tr>
-                                        <td><?=$record['full_name']?></td>
-                                        <td><?=$record['final_score']?></td>
-                                        <td><?=$record['last_click_time']?></td>
-                                        <td><?=$i?></td>
-                                    </tr>
-                                    <?php
-                                        $i++;
-                                        }
-                                        } else {
-                                        ?>
-                                    <tr>
-                                        <td colspan="3" class="text-center"><strong>No record found</strong></td>
-                                    </tr>
-                                    <?php
-                                        }
-                                        ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 mt-3">
-                        <h3 class="text-center mt-0"><span style="color:#3fdeff;"> Blue </span> Ball Chase</h3>
-                        <div class="blue_ball">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th> User Name</th>
-                                        <th>Score</th>
-                                        <th>Time</th>
-                                        <th>Position</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        if(mysqli_num_rows($blue_chase) > 0)
-                                        {
-                                         $i = 1;
-                                         while($record = $blue_chase->fetch_array(MYSQLI_ASSOC))
-                                         {
-                                             ?>
-                                    <tr>
-                                        <td><?=$record['full_name']?></td>
-                                        <td><?=$record['final_score']?></td>
-                                        <td><?=$record['last_click_time']?></td>
-                                        <td><?=$i?></td>
-                                    </tr>
-                                    <?php
-                                        $i++;
-                                        }
-                                        } else {
-                                        ?>
-                                    <tr>
-                                        <td colspan="3" class="text-center"><strong>No record found</strong></td>
-                                    </tr>
-                                    <?php
-                                        }
-                                        ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-md-12">
@@ -355,18 +269,15 @@
                                     <tbody>
                                         <?php
                                             $i = 1;
-                                            
                                             while($record = $red_chase->fetch_array(MYSQLI_ASSOC))
-                                            
                                             {
-                                            
                                             ?>
-                                        <tr>
-                                            <td><?=$record['full_name']?></td>
-                                            <td><?=$record['final_score']?></td>
-                                            <td><?=$record['last_click_time']?></td>
-                                            <td><?=$i?></td>
-                                        </tr>
+                                            <tr>
+                                                <td><?=$record['full_name']?></td>
+                                                <td><?=$record['final_score']?></td>
+                                                <td><?=$record['last_click_time']?></td>
+                                                <td><?=$i?></td>
+                                            </tr>
                                         <?php
                                             $i++;
                                             
