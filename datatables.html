@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game</title>
+        <link href="http://fonts.cdnfonts.com/css/led-digital-7" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+        <style type="text/css">
+            .panel-table .panel-body{
+            padding:0;
+            }
+            table.dataTable tbody tr {
+            background-color: #343a40;
+            }
+            div#DataTables_Table_0_length {
+            display: none;
+            }
+            div#DataTables_Table_0_filter {
+            display: none;
+            }
+            .panel-table .panel-body .table-bordered{
+            border-style: none;
+            margin:0;
+            }
+            a.paginate_button {
+            border: 1px solid #c5c5c5 !important;
+            }
+            .panel-table .panel-body .table-bordered > thead > tr > th:first-of-type {
+            text-align:center;
+            width: 100px;
+            }
+            .panel-table .panel-body .table-bordered > thead > tr > th:last-of-type,
+            .panel-table .panel-body .table-bordered > tbody > tr > td:last-of-type {
+            border-right: 0px;
+            }
+            .panel-table .panel-body .table-bordered > thead > tr > th:first-of-type,
+            .panel-table .panel-body .table-bordered > tbody > tr > td:first-of-type {
+            border-left: 0px;
+            }
+            .panel-table .panel-body .table-bordered > tbody > tr:first-of-type > td{
+            border-bottom: 0px;
+            }
+            .panel-table .panel-body .table-bordered > thead > tr:first-of-type > th{
+            border-top: 0px;
+            }
+            .panel-table .panel-footer .pagination{
+            margin:0; 
+            }
+            /*
+            used to vertically center elements, may need modification if you're not using default sizes.
+            */
+            .panel-table .panel-footer .col{
+            line-height: 34px;
+            height: 34px;
+            }
+            .panel-table .panel-heading .col h3{
+            line-height: 30px;
+            height: 30px;
+            }
+            .panel-table .panel-body .table-bordered > tbody > tr > td{
+            line-height: 34px;
+            }
+            ul.pagination.hidden-xs.pull-right li {
+            border: 1px solid #dee2e6;
+            padding: 2px 20px;
+            }
+            ul.pagination.hidden-xs.pull-right li a{
+            color: #000;
+            }
+            .table-bordered td, .table-bordered th {
+            border: 1px solid #dee2e6 !important;
+            }
+            table.table.table-striped.table-bordered.table-list {
+            border: 1px solid #9b9b9b;
+            }
+            .table-striped tbody tr:nth-of-type(odd) {
+            background-color:transparent;
+            }
+            table.table.table-striped.table-bordered.table-list {
+            border: 1px solid #9b9b9b;
+            background: #343a40;
+            color: #fff;
+            text-align: center;
+            }
+            .pagination {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding-left: 0;
+            list-style: none;
+            border-radius: .25rem;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            }
+            ul.pagination.hidden-xs.pull-right li.active {
+            background: #343a40;
+            }
+            ul.pagination.hidden-xs.pull-right li.active a {
+            color: #fff;
+            }
+        </style>
+    </head>
+    <body style="background-color:#fff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default panel-table">
+                        <div class="panel-body">
+                            <table class="table table-striped table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th> Score</th>
+                                        <th>Time</th>
+                                        <th>Position</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jitesh</td>
+                                        <td>11</td>
+                                        <td>19 : 51 </td>
+                                        <td>12</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.all.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <!--  <script src="js/main.js"></script> -->
+        <script>
+            $('.table').dataTable();
+            
+        </script>
+    </body>
+</html>
