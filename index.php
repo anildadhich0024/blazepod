@@ -261,7 +261,7 @@
                                     <thead>
                                         <tr>
                                             <th>User Name</th>
-                                            <th>Score</th>
+                                            <th> Score</th>
                                             <th>Time</th>
                                             <th>Position</th>
                                         </tr>
@@ -301,7 +301,7 @@
                                     <thead>
                                         <tr>
                                             <th>User Name</th>
-                                            <th>Score</th>
+                                            <th> Score</th>
                                             <th>Time</th>
                                             <th>Position</th>
                                         </tr>
