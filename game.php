@@ -267,7 +267,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <h5 class="mb-4">Congratulations you tapped <span class="scores"> </span> pods in <span class="last_click"> </span>. Enter your username and email address to reveal your exclusive <br> voucher code. We'll
-                        also enter you into our prize draw to win a FREE Blazepod Trainer Kit Deluxe Bundle. <span class="scores"> </span>
+                        also enter you into our prize draw to win a FREE Blazepod Trainer Kit Deluxe Bundle.
                     </h5>
                     <form method="post" action="post.php" id="data_form">
                         <input type="hidden" name="final_score" id="final_score" value="">
