@@ -33,7 +33,7 @@ while($record = $red_chase->fetch_array(MYSQLI_ASSOC))
         $mail->send();
         echo "Mail has been sent successfully!";
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$record['full_name']}";
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
     if($i == 10) {
         break;
