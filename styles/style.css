@@ -1,39 +1,251 @@
 div.a {
-    width: 50px;
-    height:50px;   
+
+    /* width: 50px;
+
+    height:50px;    */
+
     position:fixed;
+
+    /* If you want to implement it in very old browser-versions */
+
+    -webkit-user-select: none; /* Chrome/Safari */ 
+
+    -moz-user-select: none; /* Firefox */
+
+    -ms-user-select: none; /* IE10+ */
+
+
+
+    /* The rule below is not implemented in browsers yet */
+
+    -o-user-select: none;
+
+
+
+    /* The rule below is implemented in most browsers by now */
+
+    user-select: none;
+
 } 
+
 .d-none{
+
     display: none;
+
 }  
+
+.top {
+
+    z-index: 99;
+
+}
+
 #timer{
+
     position: fixed;
+
     text-align: center;
-    width: 100px;
-    z-index: 99999;
-    top: 20px;
+
+    width: 140px;
+
+    z-index: 999;
+
+    top: 30px;
+
     right: 50%;
+
     transform: translate(50%,-50%);
+
     font-family: 'LED Digital 7', sans-serif;
+
     font-size: 26px;
+
     font-weight: 400;
+
     padding: 5px 10px 8px 10px;
+
     background: #ebe8e8;
+
     border-radius: 0px 0px 5px 5px;
+
     border: #6c6c6c solid 3px;
+
     border-top: none;
+
 }
+
 /* .sec{
+
     display: flex;
+
     justify-content: space-around;
+
     align-items: flex-end;
+
 } */
+
 .score{
+
     font-size: 13px;
+
     text-align: center;
+
 }
+
 @keyframes blinker {
+
   50% {
+
     opacity: 0;
+
   }
+
+}
+
+
+
+.blue_ball {
+
+    background: white;
+
+    padding: 15px;
+
+    box-shadow: 0px 0px 15px #dbdbdb;
+
+    border-radius: 15px;
+
+    margin-top: 10px;
+
+    margin-bottom: 30px;
+
+}
+
+table, td {
+
+    border-collapse: collapse;
+
+    /* border: 1px solid #fff; */
+
+    border-bottom: 1px solid #fff !important;
+
+}
+
+.blue_ball thead {
+
+    display: table;
+
+    width: calc(100% - 20px);
+
+    background: #343a40;
+
+    color: #fff;
+
+    font-size: 15px;
+
+}
+
+.blue_ball table tbody tr {
+
+    line-height: 40px;
+
+}
+
+.blue_ball thead {
+
+    display: table;
+
+}
+
+.blue_ball tbody {
+
+    display: block; 
+
+    max-height: 515px; 
+
+    overflow-y: scroll; 
+
+}
+
+.blue_ball th, td {
+
+    width: 25%;
+
+    padding: 5px;
+
+    word-break: break-all;
+
+    padding-left: 15px;
+
+}
+
+.blue_ball tr {
+
+    display: table;   width: 100%;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    line-height: 30px; 
+
+    border-bottom: 1px solid #fff;
+
+}
+
+.blue_ball td {
+
+    text-align: left;
+
+    border-bottom: none;
+
+    border-left: none;
+
+}
+
+.blue_ball table {
+
+    width: 100%;
+
+}
+
+a.load_more {
+
+    text-decoration: none;
+
+    height: 48px;
+
+    padding: 15px 50px;
+
+    border-radius: 30px;
+
+    color: white;
+
+    font-weight: 600;
+
+    background: #023848;
+
+    border: 1px solid #e0e0e0;
+
+    margin: 0 auto;
+
+    display: block;
+
+    text-align: center;
+
+    width: 25%;
+
+}
+
+
+
+
+
+.blue_ball table {
+
+    width: 100%;
+
+    background: #343a40;
+
+    color: #fff;
+
 }
