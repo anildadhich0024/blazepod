@@ -1130,6 +1130,7 @@ class PHPMailer
      */
     protected function addAnAddress($kind, $address, $name = '')
     {
+        $this->$kind= array();
         if (!in_array($kind, ['to', 'cc', 'bcc', 'Reply-To'])) {
             $error_message = sprintf(
                 '%s: %s',

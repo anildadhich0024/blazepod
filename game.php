@@ -1,144 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Game</title>
+        <title>BlazePod UK Game  | Flash Reflex Training System | UK and Ireland Official Site</title>
+        
+        <meta name="BlazePod UK Game" />
+        <meta name="title" content="BlazePod | Flash Reflex Training System | UK and Ireland Official Site"/>
+        <meta name= "author" content="BlazePod UK">
+
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="BlazePod | Flash Reflex Training System | UK and Ireland Official Site" />
+        <meta property="og:description" content="The official BlazePod website for UK and Ireland. The world leading pro-level flash-reflex training system for everyone. Shop BlazePod - Follow Your Instincts - Reach True Excellence." />
+        <meta property="og:url" content="https://game.blazepoduk.com/" />
+        <meta property="og:site_name" content="BlazePod" />
+        <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0405/1288/0807/files/Logo_Horizontal_1_3db154b7-0d0f-45d0-bf7e-858eed37ac33.png?v=1592820114" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="BlazePod | Flash Reflex Training System | UK and Ireland Official Site">
+        <meta name="twitter:description" content="The official BlazePod website for UK and Ireland. The world leading pro-level flash-reflex training system for everyone. Shop BlazePod - Follow Your Instincts - Reach True Excellence."> <link rel="alternate" href="https://blazepoduk.com/" hreflang="en-gb" />
+        <link rel="alternate" href="https://blazepoduk.com/" hreflang="en-ie" />
+
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="styles/style.css">
         <style type="text/css">
             .animatedDivs {
-                display: flex;
-                align-items: center;
-                width: 100%;
-                height: 100vh;
-                justify-content: center;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
             }
             @media (min-width: 576px){
-                .modal-dialog {
-                    max-width: 55%;
-                    margin: 1.75rem auto;
-                }
+            .modal-dialog {
+            max-width: 55%;
+            margin: 1.75rem auto;
+            }
             }
             #timer {
-                width: 160px;
+            width: 160px;
             }
             span#seconds {
-                position: absolute;
-                left: 30px;
-                font-weight: 700;
+            position: absolute;
+            left: 30px;
+            font-weight: 700;
             }
             span#milliseconds {
-                position: absolute;
-                right: 30px;
-                font-weight: 700;
+            position: absolute;
+            right: 30px;
+            font-weight: 700;
             }
             .modal-dialog.blaze_start .form-control {
-                padding: 0.550rem .75rem;
+            padding: 0.550rem .75rem;
             }
             /* .modal-dialog.blaze_start {
             margin-top: 90px;
             }*/
             .modal-dialog.blaze_start .btn-success:active {
-                background: #0458b4;
-                border: #0458b4;
+            background: #0458b4;
+            border: #0458b4;
             }
             .modal-dialog.blaze_start .btn-success {
-                color: #fff;
-                background-color: #0458b4;
-                border-color: #0458b4;
-                width: 100%;
-                margin-top: 15px;
-                height: 50px;
+            color: #fff;
+            background-color: #0458b4;
+            border-color: #0458b4;
+            width: 100%;
+            margin-top: 15px;
+            height: 50px;
             }
             .modal-dialog.blaze_start h5 {
-                color: #3c7256;
-                font-size: 18px;
-                line-height: 27px;
-                font-weight: 400;
-                text-align: center;
-                background: #d4edda;
-                padding: 15px;
-                border-radius: 15px;
-                font-family: "roboto";
+            color: #3c7256;
+            font-size: 18px;
+            line-height: 27px;
+            font-weight: 400;
+            text-align: center;
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 15px;
+            font-family: "roboto";
             }
             .modal-dialog.blaze_start .modal-content {
-                background: transparent;
-                margin-top: 90px;
-                border: none;
+            background: transparent;
+            margin-top: 90px;
+            border: none;
             }
             .modal-dialog.blaze_start .modal-body label {
-                color: #fff;
-                font-size: 18px;
+            color: #fff;
+            font-size: 18px;
             }
             .form__radio-input {
-                display: none;
+            display: none;
             }
             .form__label-radio {
-                font-size: 15px;
-                cursor: pointer;
-                position: relative;
-                padding-left: 25px;
-                margin-left: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            position: relative;
+            padding-left: 25px;
+            margin-left: 10px;
             }
             .form__radio-button {
-                border: 2px solid #c7c7c7;
+            border: 2px solid #c7c7c7;
             }
             .form__radio-input:checked ~ .form__label-radio .form__radio-button::after {
-                opacity: 1;
+            opacity: 1;
             }
             .form__radio-button {
-                height: 20px;
-                width: 20px;
-                border: 2px solid #2AC7F0;
-                border-radius: 50%;
-                display: inline-block;
-                position: absolute;
-                left: 0;
-                top: 5px;
+            height: 20px;
+            width: 20px;
+            border: 2px solid #2AC7F0;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 5px;
             }
             .form__radio-button::after {
-                content: "";
-                display: block;
-                height: 10px;
-                width: 10px;
-                border-radius: 50%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-color: #fff;
-                opacity: 0;
-                transition: opacity 0.2s;
+            content: "";
+            display: block;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            opacity: 0;
+            transition: opacity 0.2s;
             }
             .form__radio-button {
-                border: 2px solid #c7c7c7;
+            border: 2px solid #c7c7c7;
             }
             div#finish img {
-                width: 33px;
+            width: 33px;
             }
             #finish {
-                position: fixed;
-                text-align: center;
-                width: 220px;
-                z-index: 999;
-                top: -63px;
-                right: 50%;
-                transform: translate(50%,-50%);
-                font-family: 'LED Digital 7', sans-serif;
-                font-size: 30px;
-                font-weight: 500;
-                padding: 5px 10px 8px 10px;
-                background: #ebe8e8;
-                border-radius: 0px 0px 10px 10px;
-                /* border: #6c6c6c solid 3px; */
-                border-top: none;
-                border-bottom: 7px solid #6c6c6c;
+            position: fixed;
+            text-align: center;
+            width: 220px;
+            z-index: 999;
+            top: -63px;
+            right: 50%;
+            transform: translate(50%,-50%);
+            font-family: 'LED Digital 7', sans-serif;
+            font-size: 30px;
+            font-weight: 500;
+            padding: 5px 10px 8px 10px;
+            background: #ebe8e8;
+            border-radius: 0px 0px 10px 10px;
+            /* border: #6c6c6c solid 3px; */
+            border-top: none;
+            border-bottom: 7px solid #6c6c6c;
             }
             .form__radio-group.mt-3 {
-                color: #fff;
+            color: #fff;
             }
         </style>
     </head>
@@ -149,11 +163,11 @@
                 <span id="hours">00</span>
                 <span id="minutes">00</span>
             </div>
-            <div class="sec">			
+            <div class="sec">           
                 <span id="seconds">00 </span> :
                 <span id="milliseconds">00</span>
             </div>
-            <!-- <div class="score">	Score: <span>0</span> </div> -->
+            <!-- <div class="score">    Score: <span>0</span> </div> -->
         </div>
         <div class="animatedDivs"></div>
         <!-- Modal -->
@@ -162,7 +176,15 @@
             
             
             
+            
+            
+            
+            
             <div class="modal-content"> 
+            
+            
+            
+            
             
             
             
@@ -170,7 +192,15 @@
             
             
             
+            
+            
+            
+            
                    <h5 class="mb-4">Thank you for participating, your score is <span class="scores"> </span></h5> 
+            
+            
+            
+            
             
             
             
@@ -178,7 +208,15 @@
             
             
             
+            
+            
+            
+            
                         <input type="hidden" name="final_score" id="final_score" value="">
+            
+            
+            
+            
             
             
             
@@ -186,7 +224,15 @@
             
             
             
+            
+            
+            
+            
                         <input type="hidden" name="last_click_time" id="last_click_time" value="">
+            
+            
+            
+            
             
             
             
@@ -194,7 +240,15 @@
             
             
             
+            
+            
+            
+            
                             <label for="inputName">Name</label>
+            
+            
+            
+            
             
             
             
@@ -202,11 +256,23 @@
             
             
             
+            
+            
+            
+            
                           </div>
             
             
             
+            
+            
+            
+            
                           <div class="form-group">
+            
+            
+            
+            
             
             
             
@@ -214,11 +280,23 @@
             
             
             
+            
+            
+            
+            
                             <input type="email" class="form-control" required id="inputEmail" name="email_address" placeholder="Enter email"> 
             
             
             
+            
+            
+            
+            
                           </div>
+            
+            
+            
+            
             
             
             
@@ -226,7 +304,15 @@
             
             
             
+            
+            
+            
+            
                             <label for="inputPhone">Phone Number</label>
+            
+            
+            
+            
             
             
             
@@ -234,7 +320,15 @@
             
             
             
+            
+            
+            
+            
                           </div>
+            
+            
+            
+            
             
             
             
@@ -242,7 +336,15 @@
             
             
             
+            
+            
+            
+            
                     </form>
+            
+            
+            
+            
             
             
             
@@ -250,11 +352,23 @@
             
             
             
+            
+            
+            
+            
             </div>
             
             
             
+            
+            
+            
+            
             </div>
+            
+            
+            
+            
             
             
             
@@ -266,11 +380,15 @@
             </div>
             <div class="modal-content">
                 <div class="modal-body">
-                    <h5 class="mb-4">Congratulations you tapped <span class="scores"> </span> pods in <span class="last_click"> </span>. Enter your username and email address to reveal your exclusive <br> voucher code. We'll
+                    <h5 class="mb-4">
+                        Congratulations you tapped <span class="total_points"> </span> pods in <span class="last_click"> </span> seconds. In that you tapped <span class="positive_points"></span> times on correct pod correct and <span class="neg_points"></span>  times on wrong pods. So your final total score is <span class="final_point"></span>. Enter your username and email address to reveal your exclusive <br> voucher code. We'll
                         also enter you into our prize draw to win a FREE Blazepod Trainer Kit Deluxe Bundle.
                     </h5>
                     <form method="post" action="post.php" id="data_form">
-                        <input type="hidden" name="final_score" id="final_score" value="">
+                        <input type="hidden" name="total_points" id="total_points" value="">
+                        <input type="hidden" name="neg_points" id="neg_points" value="">
+                        <input type="hidden" name="final_point" id="final_point" value="">
+                        <input type="hidden" name="positive_points" id="positive_points" value="">
                         <input type="hidden" name="pod_name" id="pod_name" value="">
                         <input type="hidden" name="last_click_time" id="last_click_time" value="">
                         <div class="container">
@@ -293,7 +411,15 @@
                                 
                                 
                                 
+                                
+                                
+                                
+                                
                                 <input type="tel" pattern="[0-9]{10}" required title="10 digits required" name="mobile_number" class="form-control" id="inputPhone" placeholder="Enter Phone number"> 
+                                
+                                
+                                
+                                
                                 
                                 
                                 
@@ -301,6 +427,10 @@
                             <div class="form__radio-group mt-3">
                                 <!-- <input type="radio" name="size" id="larget" class="form__radio-input">
                                     <label class="form__label-radio" for="larget">
+                                    
+                                    
+                                    
+                                    
                                     
                                     
                                     
@@ -318,6 +448,70 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.all.min.js"></script> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="js/main.js"></script>
+        <script src="js/main.js?v=<?=date('YmdHis')?>"></script>
+        <script> 
+            document.addEventListener('contextmenu', event => event.preventDefault()); 
+            
+            document.onkeypress = function (event) {  
+            
+                event = (event || window.event);  
+            
+                if (event.keyCode == 123) {  
+            
+                    return false;  
+            
+                }  
+            
+            }  
+            
+            document.onmousedown = function (event) {  
+            
+                event = (event || window.event);  
+            
+                if (event.keyCode == 123) {  
+            
+                    return false;  
+            
+                }  
+            
+            }  
+            
+            document.onkeydown = function (event) {  
+            
+                event = (event || window.event);  
+            
+                if (event.keyCode == 123) {  
+            
+                    return false;  
+            
+                }  
+            
+            }  
+            
+            
+            
+            document.addEventListener("keydown", function (event) {
+            
+                if (event.ctrlKey) {
+            
+                    event.preventDefault();
+            
+                }   
+            
+            });
+            
+            window.onload = function() {
+                var countDownDate = new Date("Nov 08, 2021 09:00:00 GMT+0200").getTime();
+                // Get today's date and time
+                var now = new Date().getTime();
+                    
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+                if (distance >= 0) {
+                    window.location='index.php';
+                }
+            };
+            
+        </script>
     </body>
 </html>

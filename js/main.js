@@ -1,5 +1,8 @@
 var correctId = getCookie();
 var score = 0;
+var NegScore = 0;
+var final_points = 0;
+var total_points = 0;
 var continueBalls = true;
 var ballName = 'BLUE';
 var lastClick = 0;
@@ -151,24 +154,24 @@ $(document).ready(function () {
 $(document).on('click', '.a', function (e) { 
 
     if(generateCorrectBallId() == $(this).attr('id')) { 
-
         score+=1;
-
         changeBallSource();
+    } else {
+        NegScore+=1
+    }
+    var now = new Date();    
+    var endDate = new Date(timeObject);	        
+    var currentTime = now.getTime();
+    var deltaTime = endDate - currentTime;  
+    lastClick = totalTime - deltaTime; 
 
-        var now = new Date();    
-        var endDate = new Date(timeObject);	        
-        var currentTime = now.getTime();
-        var deltaTime = endDate - currentTime;  
-        lastClick = totalTime - deltaTime; 
+    var ms = Math.floor(lastClick % 60);
 
-        var ms = Math.floor(lastClick % 60);
+    var s = Math.floor(lastClick / 1000); 
 
-        var s = Math.floor(lastClick / 1000); 
-
-        s %= 60;
-        finalTime = s+' : '+ms;
-    } 
+    s %= 60;
+    finalTime = s.toString().padStart(2, 0)+' : '+ms.toString().padStart(2, 0);
+    
 
 });
 
@@ -370,7 +373,12 @@ function countdown() {
 
 	if(deltaTime<=100 && deltaTime>=-10000) { 
         
-        $('span.scores').html(score);
+        var total_points = NegScore + score;
+        var final_points = score - NegScore;
+        $('span.total_points').html(total_points);
+        $('span.positive_points').html(score);
+        $('span.neg_points').html(NegScore);
+        $('span.final_point').html(final_points);
         $('span.last_click').html(finalTime);
         
         $('#exampleModal').modal({'show': true, 'backdrop': 'static', 'keyboard': false});
@@ -454,9 +462,17 @@ $(document).ready(function(){
             alert("Please provide your email address");
             return false;
         }      
-        $('#final_score').val(btoa(score));
+
+        var total_points = NegScore + score;
+        var final_points = score - NegScore;
+        $('#total_points').val(btoa(total_points));
+        $('#neg_points').val(btoa(NegScore));
+        $('#positive_points').val(btoa(score));
+        $('#final_point').val(btoa(final_points));
+
         $('#pod_name').val(btoa(ballName));
         $('#last_click_time').val(btoa(finalTime));
+
         $('#data_form').submit();
     });
 });
