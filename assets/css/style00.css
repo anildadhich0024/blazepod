@@ -74,30 +74,13 @@ h1, h2, h3, h4, h5, h6, .font-primary {
     background-position: center;
     padding-top: 50px;
 }
-#hero1 h1{
-    font-size: 60px;
-    text-shadow: 0px 0px 15px #FFFFFFDB;
-    text-transform: uppercase;
-    color: #fff;
-    text-align: center;
-    font-weight: 400;
-}
 #hero1 h2{
-    font-size: 45px;
+    font-size: 52px;
     text-shadow: 0px 0px 15px #FFFFFFDB;
     text-transform: uppercase;
     color: #fff;
     text-align: center;
     font-weight: 400;
-}
-#hero1 p {
-    font-size: 22px;
-    color: #fff;
-    line-height: 37px;
-    font-family: 'Oswald', sans-serif;
-    text-align: center;
-    padding: 40px 80px;
-    margin-bottom: 0;
 }
 
 .logo-1 img{
@@ -109,7 +92,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 #hero1 .logo-2 img{
     max-width: -webkit-fill-available;
-    /*width: 200%;*/
+    width: 200%;
 }
 #hero1 .logo-1 img{
     max-height: 60px;
@@ -166,9 +149,9 @@ h1, h2, h3, h4, h5, h6, .font-primary {
     line-height: 37px;
     font-family: 'Oswald', sans-serif;
     text-align: left;
-    padding:0 40px;
+    padding:0 80px;
     margin-bottom: 0;
-    /*max-width: 900px;*/
+    max-width: 900px;
     margin: 30px auto;
     position: relative;
 }
@@ -180,7 +163,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
     background: url(../img/OBJECTS.svg) no-repeat;
     position: absolute;
     left: -190px;
-    top: 940px;
+    top: 690px;
     background-size: contain;
 }
 .chose-tm{
@@ -203,13 +186,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
     z-index: 999;
     position: relative;
 }
-.ccode {
-    border: 1.5px dashed #45c0da;
-    padding: 4px 7px;
-    color: #fff;
-    background: rgb(69 192 218/.15);
-    border-radius: 2px;
-}
+
 .chose-tm2{
     margin-top: 200px;
     display: inline-block;
@@ -219,6 +196,13 @@ h1, h2, h3, h4, h5, h6, .font-primary {
     max-width: 60%;
     vertical-align: top;
     margin-left: -100px;
+}
+.ccode {
+    border: 1.5px dashed #45c0da;
+    padding: 4px 7px;
+    color: #fff;
+    background: rgb(69 192 218/.15);
+    border-radius: 2px;
 }
 
 #services{
@@ -327,6 +311,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
     margin-top: 50px;
     display: inline-block;
 }
+
 #portfolio .tbls-btn p{
     font-size: 15px;
     color: #45c0da;
@@ -337,7 +322,6 @@ h1, h2, h3, h4, h5, h6, .font-primary {
     margin-bottom: 0;
     border-radius: 15px;
     background: rgb(69 192 218/.15);
-    font-family: 'Oswald', sans-serif;
 }
 #portfolio .tbls-btn p span{
     font-size: 13px;
@@ -403,31 +387,10 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 #portfolio p{
     font-size: 14px;
     color: #F8F8F8;
-    text-align: left;
+    text-align: center;
     margin-top: 50px;
 } 
-.nw-p{
-    font-size: 20px !important;
-    color: #fff;
-    line-height: 37px;
-    font-family: 'Oswald', sans-serif;
-    text-align: left;
-    padding: 0 80px;
-    margin-bottom: 0;
-    margin: 30px auto 30px !important;
-    position: relative;
-}
-.nw-pp{
-    font-size: 20px !important;
-    color: #fff;
-    line-height: 37px;
-    font-family: 'Oswald', sans-serif;
-    text-align: left;
-    padding: 0 80px;
-    margin-bottom: 0;
-    margin: 30px auto 30px !important;
-    position: relative;
-}
+
 #contact{
     background-repeat: no-repeat;
     position: relative;
@@ -622,11 +585,6 @@ footer a {
 @media (max-width: 767px) {
 #hero1 {
     min-height: 95vh;
-    padding-top: 20px;
-}
-#hero1 h1 {
-    margin-top: -50px;
-    font-size: 40px;
 }
 
 #hero {
@@ -664,8 +622,8 @@ footer a {
     margin-top: -90px;
 }
 #hero1 h2 {
-    font-size: 25px;
-    margin: 0px 20px;
+    font-size: 30px;
+    margin: -40px 20px;
 }
 .lgt-img1 {
     margin-top: -20px;
@@ -720,10 +678,8 @@ footer a {
     margin: 50px auto 30px;
 }
 .game-sc {
-        border-radius: 20px;
+    border-radius: 20px;
     max-width: 90%;
-    margin-top: -190px;
-    margin-bottom: 30px;
 }
 .btens a {
     margin: 10px;
@@ -750,9 +706,6 @@ footer a {
 }
 .tbl-bg table {
     border-spacing: 0 0.5em;
-}
-#portfolio p {
-    padding: 0 20px;
 }
 
 

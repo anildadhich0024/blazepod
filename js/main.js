@@ -53,9 +53,9 @@ $(document).ready(function () {
 
         Swal.fire({
 
-            title: 'Be Ready to Play!',
+            title: 'Get Ready to Play!',
 
-            text: "Chase Blue ball",
+            text: "Chase the Blue Pod",
 
             icon: 'success',
 
@@ -103,9 +103,9 @@ $(document).ready(function () {
 
         Swal.fire({
 
-            title: 'Be Ready to Play!',
+            title: 'Get Ready to Play!',
 
-            text: "Chase Red ball",
+            text: "Chase the Red Pod",
 
             icon: 'success',
 
@@ -449,6 +449,14 @@ function startTimer() {
     timeObject = new Date(timeObject.getTime() + totalTime); 
     interval = setInterval(countdown,100);
 
+    $.ajax({
+        type: 'GET',
+        url: "https://stageofproject.com/blazepod/start_game.php?pod_name="+ballName,
+        // success:function(data){
+        //     alert(data);
+        // }
+    });
+
 };
 
 
@@ -461,6 +469,14 @@ $(document).ready(function(){
         if($("input[name=email_address]").val() == '') {
             alert("Please provide your email address");
             return false;
+        }
+        else
+        {
+            if(IsEmail($("input[name=email_address]").val())==false){
+                alert("Please provide your valid email address");
+                $("input[name=email_address]").focus();
+                return false;
+            }
         }      
 
         var total_points = NegScore + score;
@@ -476,3 +492,12 @@ $(document).ready(function(){
         $('#data_form').submit();
     });
 });
+
+function IsEmail(email) {
+    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if(!regex.test(email)) {
+      return false;
+    }else{
+      return true;
+    }
+}
