@@ -2,10 +2,11 @@
 include('db.php');
 $pod_name  = base64_decode($_SESSION['pod_name']);
 $code_name = base64_decode($_SESSION['code_name']);
-if((($pod_name != 'RED' || $pod_name != 'BLUE') && !isset($pod_name)) && (($code_name != 'BF15' || $code_name != 'CHASE20' || $code_name != 'GAME25') && !isset($code_name)))
+if((($pod_name != 'RED' || $pod_name != 'BLUE') && !isset($_SESSION['pod_name'])) && (($code_name != 'BF15' || $code_name != 'CHASE20' || $code_name != 'GAME25') && !isset($_SESSION['code_name'])))
 {
     echo '<script>window.location.href= "leaderboard"</script>';
 }
+
 $record_list  = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score from user_submissions WHERE pod_name = '".$pod_name."' ORDER BY score DESC, last_click_time ASC");
 ?>
 <!DOCTYPE html>
@@ -32,12 +33,33 @@ $record_list  = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score fr
         
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
         <!-- Template Main CSS File -->
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/style.css?v=<?=date('YmdHis')?>" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
         <style type="text/css">
+        .tbl-bg.tableFixHead table tbody {
+                display: block;
+                width: 100%;
+                overflow: auto;
+                max-height: 400px;
+            }
+            .tableFixHead {
+                overflow: auto;
+                height: auto;
+            }
+            
+            .tbl-bg.tableFixHead tr {
+                width: 100%;
+                display: table;
+                table-layout: fixed; }
+                
+            .tbl-bg.tableFixHead th, td {
+                display: table-cell;
+                text-align: left;
+                }
+
         	#portfolio {
     width: 95%;
     margin: 0 auto;
@@ -62,14 +84,14 @@ $record_list  = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score fr
                <div class="col-md-12">
                   <p>
                     Congratulations you’ve won a Discount Voucher which can be used on all BlazePod kits, bundles and accessories! Your exclusive voucher code is <b class="ccode"><?=$code_name?></b> and expires at 23:59 on Tuesday 30th November 2021. <br>
-                    Remember, you can play the game as many times as you want, each time you play you’ll get another entry into our prize draw! The more times you play the more chances you have to win! In order for your score to be updated on the leaderboard please make sure you use the same username and email address. Multiple usernames can be submitted using the same email address, perfect for having the whole family play!<br><br>
+                    Remember, you can play the game as many times as you want, each time you play you’ll get another entry into our prize draw! The more times you play the more chances you have to win! In order for your score to be updated on the leaderboard please make sure you use the same username and email address.<br><br>
                     <span>You’ll receive a confirmation email confirming the first voucher code you won, further entries won’t result in additional emails so if you win a different voucher code, please write this down! We will notify you by email if you are the lucky winner or if you’re top of the leaderboard at 23:59 on Tuesday 30th November 2021.</span>
                   </p>
                </div>
             </div>
             <div class="row">
                 <?php
-                if(base64_decode($_GET['pod_name']) == 'RED')
+                if($pod_name == 'RED')
                 {
                 ?>
                     <div class="col-md-12 text-center mt-5">
@@ -151,7 +173,7 @@ $record_list  = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score fr
                         <a href="game"><img src="assets/img/replay.svg" style="max-height: 25px;"> Play Again</a>
                      </div>
                      <div class="col-md-4 text-right">
-                        <a href="https://blazepod-game.web.app/">BlazePod Website</a>
+                        <a href="https://www.blazepod.com/" target="_blank">BlazePod Website</a>
                      </div>
                   </div>
                </div>

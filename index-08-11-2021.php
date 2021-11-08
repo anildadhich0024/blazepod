@@ -29,7 +29,6 @@
         <link rel="alternate" href="https://blazepoduk.com/" hreflang="en-ie" />
 
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -57,23 +56,14 @@
                 display: table-cell;
                 text-align: left;
                 }
-
-                /* Custom style */
-    .accordion-button::after {
-      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
-      transform: scale(.7) !important;
-    }
-    .accordion-button:not(.collapsed)::after {
-      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
-    }
         </style>
     </head>
     <body>
         <section id="hero1" class="" style="background: url('assets/img/banner1.png') center;">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <a href="https://www.blazepoduk.com" class="logo-1" target="_blank">
-                        <img src="assets/img/Logo_Horizontal_White.png" alt="">
+                    <a href="#" class="logo-1">
+                    <img src="assets/img/Logo_Horizontal_White.png" alt="">
                     </a>
                 </div>
             </div>
@@ -277,101 +267,22 @@
         <section id="contact" style="background: url('assets/img/noise-bg.png') top;">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12 p-0">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6 px-0">
                         <div class="frm-bg">
-                            <h4>FAQs</h4>
-                            <div class="accordion" id="myAccordion">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">1. Can anyone play the game?</button>                                  
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#myAccordion">
-                                        <div class="card-body">
-                                            <p>The game is available to all UK and Ireland residents, with discounts and prizes only available to those based in the UK and Ireland and with a UK or Ireland postal address</p>
-                                        </div>
-                                    </div>
+                            <h4>WHO WILL YOU CHOOSE?</h4>
+                            <form>
+                                <div style="padding: 5px;">
+                                    <input class="form-control" name="firstname" placeholder="Name" type="text" required="">
+                                    <input class="form-control" name="email" placeholder="Email" type="text" required="">
+                                    <input class="form-control" name="Phone Number" placeholder="Phone Number" type="text" required="">
+                                    <input class="form-control" name="Team" placeholder="Team" type="text" required="">
+                                    <button type="submit" class="btn btn-primary">Send</button>
                                 </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">2. How do I play?</button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                        <div class="card-body">
-                                            <p>Simple, just click the Play Now button above and test out your reflexes for either #BlazePodTeamRed or #BlazePodTeamBlue</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">3.   How many times can I play?</button>                     
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                        <div class="card-body">
-                                            <p>As many times as you want, keep playing until 23:59 on the 30th November 2021</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingFour">
-                                        <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">4.   How do I unlock my BlackFriday / Cyber Monday discount code?</button>                     
-                                    </h2>
-                                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                        <div class="card-body">
-                                            <p>Once you’ve played the ‘Chase The Pod’ game, register your email address and username to unlock your 15%, 20% or 25% discount code, this will show on screen and be emailed to you</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingFive">
-                                        <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">5.   Can I unlock more than one discount code?</button>
-                                    </h2>
-                                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                        <div class="card-body">
-                                            <p>Yes, simply play the game again, enter your same username and email address and see if you unlock a different code</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingSix">
-                                        <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSix">6.   Can I play for #BlazePodTeamRed and #BlazePodTeamBlue?</button>
-                                    </h2>
-                                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                        <div class="card-body">
-                                            <p>No, unfortunately once you’ve selected one and submitted your username and email address you can join the other leaderboard, so choose wisely!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingSeven">
-                                        <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSeven">7.   How do I redeem my discount voucher? </button>
-                                    </h2>
-                                    <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                        <div class="card-body">
-                                            <p>Visit our store at <a href="">www.blazepoduk.com</a> add your items to the shopping basket and user your discount code at the checkout stage</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingEight">
-                                        <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseEight">8.   What does my discount code entitle me to?</button>
-                                    </h2>
-                                    <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                        <div class="card-body">
-                                            <p>15%, 20% or 25% of our entire store of kits, bundles, training and accessories, the only thing not covered by the discount is shipping costs</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="text-center btens">
-                                <a class="red-bt" onclick="select_pod(1)">PLAY FOR TEAM RED</a>
-                                <a class="blue-bt" href="https://www.blazepod.com/" target="_blank">SHOP NOW</a>
-                                <a class="blue-bt" onclick="select_pod(0)">PLAY FOR TEAM BLUE</a>
-                            </div>
-
+                            </form>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
@@ -383,7 +294,7 @@
                     </div>
                     <div class="col-md-6 text-center">
                         <a href="https://blazepoduk.com/pages/privacy-policy" target="_blank">Privacy Policy</a> 
-                        <a href="https://blazepoduk.com/pages/terms-of-use" target="_blank">Terms and Conditions</a>
+                        <a href="https://www.blazepod.com/pages/terms-of-use" target="_blank">Terms and Conditions</a>
                     </div>
                     <div class="col-md-2">
                     </div>
@@ -399,4 +310,3 @@ function select_pod(POD_NAME)
     window.location="game";
 }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

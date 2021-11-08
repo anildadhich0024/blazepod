@@ -188,7 +188,7 @@ session_unset();
                 <div class="modal-body">
                     <h5 class="mb-4 text-left">
                         <p>Congratulations you tapped out <span class="total_points"> </span> pods in <span class="last_click"> </span> seconds... you tapped out <span class="positive_points"></span> correctly coloured pods and <span class="neg_points"></span> of the wrong colour. Your final score is <span class="final_point"></span>.</p>
-                        <p>Enter your username and email address below to reveal your exclusive Black Friday discount code of up to 25%. Once you've submitted your details you can always play again and look to beat your score, just remember your username and you'll need this to update your personal leaderboard score!</p>
+                        <p>Enter your username and email address below to reveal your exclusive Black Friday discount code of up to 25%. Once you've submitted your details you can always play again and look to beat your score, just remember your username as you’ll need this to update your personal leaderboard score if you want to play again</p>
                         <p>If you're in the Top 10 for either the Red or Blue Leaderboards then you're in with a chance to win a heap of BlazePod prizes too!</p>
                         <p><small style="font-size:75%;">Your username will be seen on our leaderboard so don't include personal information you don't want to be seen by others. Usernames which are deemed offensive by the BlazePod team will be deleted.</small></p>
                     </h5>
@@ -203,8 +203,8 @@ session_unset();
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inputName">Full Name:</label>
-                                        <input type="text" class="form-control" required id="inputName" name="full_name" placeholder="User Name"> 
+                                        <label for="inputName">Username:</label>
+                                        <input type="text" class="form-control" required id="inputName" name="full_name" placeholder="Username"> 
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -217,10 +217,17 @@ session_unset();
                             <div class="form__radio-group mt-3">
                                 <input type="checkbox" name="accept_condition" id="larget" value="Yes" class="form__radio-input">
                                     <label class="form__label-radio" for="larget">
-                                    <span class="form__radio-button"></span> I wish to opt in to receive email updates, news from Blazepod. ( You can unsubscribe from Blazepod emails at any time in the future).
+                                    <span class="form__radio-button"></span> I wish to opt in to receive exciting email updates, news and offers from BlazePod UK and Ireland (You can unsubscribe from BlazePod emails at any time)
                                 </label>
                             </div>
-                            <button class="btn btn-success" type="button">Submit</button>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-success" type="button">Submit</button>
+                            </div>
+                            <div class="col-md-6 ">
+                                <button class="btn btn-success" type="button" onclick="window.location='game'"><img src="assets/img/replay.svg" style="max-height: 25px;"> Play Again</button>
+                             </div>
+                         </div>
                     </form>
                     </div> 
                 </div>
@@ -233,55 +240,69 @@ session_unset();
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="js/main.js?v=<?=date('YmdHis')?>"></script>
         <script> 
-            document.addEventListener('contextmenu', event => event.preventDefault()); 
+        //     document.addEventListener('contextmenu', event => event.preventDefault()); 
             
-            document.onkeypress = function (event) {  
+        //     document.onkeypress = function (event) {  
             
-                event = (event || window.event);  
+        //         event = (event || window.event);  
             
-                if (event.keyCode == 123) {  
+        //         if (event.keyCode == 123) {  
             
-                    return false;  
+        //             return false;  
             
-                }  
+        //         }  
             
-            }  
+        //     }  
             
-            document.onmousedown = function (event) {  
+        //     document.onmousedown = function (event) {  
             
-                event = (event || window.event);  
+        //         event = (event || window.event);  
             
-                if (event.keyCode == 123) {  
+        //         if (event.keyCode == 123) {  
             
-                    return false;  
+        //             return false;  
             
-                }  
+        //         }  
             
-            }  
+        //     }  
             
-            document.onkeydown = function (event) {  
+        //     document.onkeydown = function (event) {  
             
-                event = (event || window.event);  
+        //         event = (event || window.event);  
             
-                if (event.keyCode == 123) {  
+        //         if (event.keyCode == 123) {  
             
-                    return false;  
+        //             return false;  
             
-                }  
+        //         }  
             
-            }  
+        //     }  
             
             
             
-            document.addEventListener("keydown", function (event) {
+        //     document.addEventListener("keydown", function (event) {
             
-                if (event.ctrlKey) {
+        //         if (event.ctrlKey) {
             
-                    event.preventDefault();
+        //             event.preventDefault();
             
-                }   
+        //         }   
             
-            });
+        //     });
+
+
+        //     document.onkeydown = function (event) {  
+            
+        //     event = (event || window.event);  
+        
+        //     if (event.keyCode == 32) {  
+        
+        //         return false;  
+        
+        //     }  
+        
+        // }  
+            
             
         </script>
     </body>

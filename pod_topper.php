@@ -12,12 +12,12 @@ $mail->SMTPDebug = 2;
 $mail->isSMTP();                                            
 $mail->Host       = 'smtp.gmail.com';                    
 $mail->SMTPAuth   = true;                             
-$mail->Username   = 'blazepodgame@gmail.com';                 
-$mail->Password   = 'Anil#123!';                        
+$mail->Username   = 'noreply@blazepoduk.com';                 
+$mail->Password   = 'Blazepoduk@123';                        
 $mail->SMTPSecure = 'ssl';                              
 $mail->Port       = 465;  
 
-$mail->setFrom('blazepodgame@gmail.com', 'BlazePod');  
+$mail->setFrom('noreply@blazepoduk.com', 'BlazePod');  
 
 // RED POD TOPPER EMAIL
 if(mysqli_num_rows($red_chase) > 0) {

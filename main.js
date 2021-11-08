@@ -9,17 +9,17 @@ var lastClick = 0;
 var finalTime = '00 : 00';
 sourceImg = [
 
-    'https://game.blazepoduk.com/img/pod/blue.png',
+    'https://stageofproject.com/blazepod/img/pod/blue.png',
 
-    'https://game.blazepoduk.com/img/pod/red.png',
+    'https://stageofproject.com/blazepod/img/pod/red.png',
 
-    'https://game.blazepoduk.com/img/pod/green.png',
+    'https://stageofproject.com/blazepod/img/pod/green.png',
 
-    'https://game.blazepoduk.com/img/pod/purple.png',
+    'https://stageofproject.com/blazepod/img/pod/purple.png',
 
-    'https://game.blazepoduk.com/img/pod/white.png',
+    'https://stageofproject.com/blazepod/img/pod/white.png',
 
-    'https://game.blazepoduk.com/img/pod/yello.png',
+    'https://stageofproject.com/blazepod/img/pod/yello.png',
 
 ]
 
@@ -451,7 +451,7 @@ function startTimer() {
 
     $.ajax({
         type: 'GET',
-        url: "https://game.blazepoduk.com/start_game.php?pod_name="+ballName,
+        url: "https://stageofproject.com/blazepod/start_game.php?pod_name="+ballName,
         // success:function(data){
         //     alert(data);
         // }
@@ -489,12 +489,17 @@ $(document).ready(function(){
         $('#pod_name').val(btoa(ballName));
         $('#last_click_time').val(btoa(finalTime));
         
-        $.get("https://game.blazepoduk.com/check_email.php?email_address="+$("input[name=email_address]").val()+"&full_name="+$("input[name=full_name]").val()+"&pod_name="+ballName, function(data, status){
-            if(data != 'DONE') {
-                alert(data);
+        $.get("https://stageofproject.com/blazepod/check_email.php?email_address="+$("input[name=email_address]").val()+"&pod_name="+ballName, function(data, status){
+            if(data == 'U0') {
+                alert('This username already exists, Please use another username.');
                 return false;
             } else {
-                $('#data_form').submit();
+                if(data == 'E0') {
+                    alert('This email id already exists, Please verify and try with another');
+                    return false;
+                } else {
+                    $('#data_form').submit();
+                }
             }
         });
     });
