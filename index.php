@@ -307,16 +307,4 @@ function select_pod(POD_NAME)
     document.cookie = "POD_NAME="+POD_NAME;
     window.location="game";
 }
-
-// window.onload = function() {
-//     var countDownDate = new Date("Nov 08, 2021 09:00:00 GMT+0200").getTime();
-//     // Get today's date and time
-//     var now = new Date().getTime();
-        
-//     // Find the distance between now and the count down date
-//     var distance = countDownDate - now;
-//     if (distance >= 0) {
-//         window.location='index.php';
-//     }
-// };
 </script>
