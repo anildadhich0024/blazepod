@@ -18,7 +18,7 @@ if(empty($record))
 {
   $mail_status = true;
   $sql = mysqli_query($con, "INSERT INTO user_submissions (full_name, email_address, total_points, positive_points, neg_points, final_score, pod_name, last_click_time, accept_condition, code_name)
-  VALUES ('".$_POST['full_name']."', '".$_POST['email_address']."', '".base64_decode($_POST['total_points'])."', '".base64_decode($_POST['positive_points'])."', '".base64_decode($_POST['neg_points'])."', '".base64_decode($_POST['final_point'])."', '".base64_decode($_POST['pod_name'])."', '".base64_decode($_POST['last_click_time'])."', '".$_POST['accept_condition']."', '".$code_name."')");
+  VALUES ('".str_replace(' ', '', $_POST['full_name'])."', '".$_POST['email_address']."', '".base64_decode($_POST['total_points'])."', '".base64_decode($_POST['positive_points'])."', '".base64_decode($_POST['neg_points'])."', '".base64_decode($_POST['final_point'])."', '".base64_decode($_POST['pod_name'])."', '".base64_decode($_POST['last_click_time'])."', '".$_POST['accept_condition']."', '".$code_name."')");
 }
 else
 {

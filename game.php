@@ -240,68 +240,68 @@ session_unset();
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="js/main.js?v=<?=date('YmdHis')?>"></script>
         <script> 
-        //     document.addEventListener('contextmenu', event => event.preventDefault()); 
+            document.addEventListener('contextmenu', event => event.preventDefault()); 
             
-        //     document.onkeypress = function (event) {  
+            document.onkeypress = function (event) {  
             
-        //         event = (event || window.event);  
+                event = (event || window.event);  
             
-        //         if (event.keyCode == 123) {  
+                if (event.keyCode == 123) {  
             
-        //             return false;  
+                    return false;  
             
-        //         }  
+                }  
             
-        //     }  
+            }  
             
-        //     document.onmousedown = function (event) {  
+            document.onmousedown = function (event) {  
             
-        //         event = (event || window.event);  
+                event = (event || window.event);  
             
-        //         if (event.keyCode == 123) {  
+                if (event.keyCode == 123) {  
             
-        //             return false;  
+                    return false;  
             
-        //         }  
+                }  
             
-        //     }  
+            }  
             
-        //     document.onkeydown = function (event) {  
+            document.onkeydown = function (event) {  
             
-        //         event = (event || window.event);  
+                event = (event || window.event);  
             
-        //         if (event.keyCode == 123) {  
+                if (event.keyCode == 123) {  
             
-        //             return false;  
+                    return false;  
             
-        //         }  
+                }  
             
-        //     }  
+            }  
             
             
             
-        //     document.addEventListener("keydown", function (event) {
+            document.addEventListener("keydown", function (event) {
             
-        //         if (event.ctrlKey) {
+                if (event.ctrlKey) {
             
-        //             event.preventDefault();
+                    event.preventDefault();
             
-        //         }   
+                }   
             
-        //     });
+            });
 
 
-        //     document.onkeydown = function (event) {  
+            document.onkeydown = function (event) {  
             
-        //     event = (event || window.event);  
+            event = (event || window.event);  
         
-        //     if (event.keyCode == 32) {  
+            if (event.keyCode == 32) {  
         
-        //         return false;  
+                return false;  
         
-        //     }  
+            }  
         
-        // }  
+        }  
             
             
         </script>

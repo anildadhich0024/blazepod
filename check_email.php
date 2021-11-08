@@ -10,7 +10,7 @@ if ($con -> connect_errno) {
 
 
 
-$username = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM user_submissions WHERE full_name = '".$_GET['full_name']."' LIMIT 1"));
+$username = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM user_submissions WHERE full_name = '".str_replace(' ', '', $_POST['full_name'])."' LIMIT 1"));
 if(empty($username)) {
     $emailaddress = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM user_submissions WHERE email_address = '".$_GET['email_address']."' LIMIT 1"));
     if(empty($emailaddress)) {
