@@ -9,17 +9,17 @@ var lastClick = 0;
 var finalTime = '00 : 00';
 sourceImg = [
 
-    'https://game.blazepoduk.com/img/pod/blue.png',
+    'https://stageofproject.com/blazepod/img/pod/blue.png',
 
-    'https://game.blazepoduk.com/img/pod/red.png',
+    'https://stageofproject.com/blazepod/img/pod/red.png',
 
-    'https://game.blazepoduk.com/img/pod/green.png',
+    'https://stageofproject.com/blazepod/img/pod/green.png',
 
-    'https://game.blazepoduk.com/img/pod/purple.png',
+    'https://stageofproject.com/blazepod/img/pod/purple.png',
 
-    'https://game.blazepoduk.com/img/pod/white.png',
+    'https://stageofproject.com/blazepod/img/pod/white.png',
 
-    'https://game.blazepoduk.com/img/pod/yello.png',
+    'https://stageofproject.com/blazepod/img/pod/yello.png',
 
 ]
 

@@ -13,12 +13,12 @@ $code_key = array_rand($code_array);
 $code_name = $code_array[$code_key];
 $mail_status = false;
 
-$record = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM user_submissions WHERE email_address = '".$_POST['email_address']."' AND full_name = '".$_POST['full_name']."' AND pod_name = '".base64_decode($_POST['pod_name'])."'"));
+$record = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM user_submissions WHERE email_address = '".trim($_POST['email_address'])."' AND full_name = '".str_replace(' ', '', trim($_POST['full_name']))."' AND pod_name = '".base64_decode($_POST['pod_name'])."'"));
 if(empty($record))
 {
   $mail_status = true;
   $sql = mysqli_query($con, "INSERT INTO user_submissions (full_name, email_address, total_points, positive_points, neg_points, final_score, pod_name, last_click_time, accept_condition, code_name)
-  VALUES ('".str_replace(' ', '', $_POST['full_name'])."', '".$_POST['email_address']."', '".base64_decode($_POST['total_points'])."', '".base64_decode($_POST['positive_points'])."', '".base64_decode($_POST['neg_points'])."', '".base64_decode($_POST['final_point'])."', '".base64_decode($_POST['pod_name'])."', '".base64_decode($_POST['last_click_time'])."', '".$_POST['accept_condition']."', '".$code_name."')");
+  VALUES ('".str_replace(' ', '', trim($_POST['full_name']))."', '".trim($_POST['email_address'])."', '".base64_decode($_POST['total_points'])."', '".base64_decode($_POST['positive_points'])."', '".base64_decode($_POST['neg_points'])."', '".base64_decode($_POST['final_point'])."', '".base64_decode($_POST['pod_name'])."', '".base64_decode($_POST['last_click_time'])."', '".$_POST['accept_condition']."', '".$code_name."')");
 }
 else
 {
@@ -48,8 +48,8 @@ if($mail_status)
       'api_id'                 => 'MoHx_J7cKxV4M5tyaKoM205-9cs.',
       'api_key'                => '7gdcavfGsMwRvf6WuohNMNS4RrocCVcSnwXejcXM8mI.',
       'workflow_api_identifier' => urlencode('BPod/BF2021/trigger_workflow'),
-      'email_address'           => urlencode($_POST['email_address']),
-      'first_name'              => urlencode($_POST['full_name']),
+      'email_address'           => urlencode(trim($_POST['email_address'])),
+      'first_name'              => urlencode(str_replace(' ', '', trim($_POST['full_name']))),
       'variable_data_1'         => urlencode($code_name),
   );
 

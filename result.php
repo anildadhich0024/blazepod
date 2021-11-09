@@ -7,7 +7,7 @@ if((($pod_name != 'RED' || $pod_name != 'BLUE') && !isset($_SESSION['pod_name'])
     echo '<script>window.location.href= "leaderboard"</script>';
 }
 
-$record_list  = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score from user_submissions WHERE pod_name = '".$pod_name."' ORDER BY score DESC, last_click_time ASC");
+$record_list  = $con->query("Select *, final_score AS score from user_submissions WHERE pod_name = '".$pod_name."' ORDER BY score DESC, last_click_time ASC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +33,7 @@ $record_list  = $con->query("Select *, CAST(final_score AS UNSIGNED) AS score fr
         
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
         <!-- Template Main CSS File -->
-        <link href="assets/css/style.css?v=<?=date('YmdHis')?>" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
