@@ -3,8 +3,8 @@
     session_unset();
 	date_default_timezone_set("Europe/London");
 	//echo "SELECT *, final_score AS score FROM user_submissions WHERE created_at < '".date('Y-m-d 00:00:00')."' AND pod_name = 'RED' ORDER BY score DESC, last_click_time ASC LIMIT 1";
-    $red_ball_top = mysqli_fetch_array(mysqli_query($con, "SELECT *, final_score AS score FROM user_submissions WHERE created_at < '".date('Y-m-d 00:00:00')."' AND pod_name = 'RED' ORDER BY score DESC, last_click_time ASC LIMIT 1")); 
-    $blue_ball_top = mysqli_fetch_array(mysqli_query($con, "SELECT *, final_score AS score FROM user_submissions WHERE created_at < '".date('Y-m-d 00:00:00')."' AND pod_name = 'BLUE' ORDER BY score DESC, last_click_time ASC LIMIT 1")); 
+    $red_ball_top = mysqli_fetch_array(mysqli_query($con, "SELECT *, final_score AS score FROM user_submissions WHERE updated_at < '".date('Y-m-d 00:00:00')."' AND pod_name = 'RED' ORDER BY score DESC, last_click_time ASC LIMIT 1")); 
+    $blue_ball_top = mysqli_fetch_array(mysqli_query($con, "SELECT *, final_score AS score FROM user_submissions WHERE updated_at < '".date('Y-m-d 00:00:00')."' AND pod_name = 'BLUE' ORDER BY score DESC, last_click_time ASC LIMIT 1")); 
     $red_chase  = $con->query("Select *, final_score AS score from user_submissions WHERE pod_name = 'RED' ORDER BY score DESC, last_click_time ASC");
     $blue_chase  = $con->query("Select *, final_score AS score from user_submissions WHERE pod_name = 'BLUE' ORDER BY score DESC, last_click_time ASC");
 ?>
