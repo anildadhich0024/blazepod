@@ -25,11 +25,12 @@ if(mysqli_num_rows($red_chase) > 0) {
     while($record_red = $red_chase->fetch_array(MYSQLI_ASSOC))
     {
         $mail->addAddress($record_red['email_address'], $record_red['full_name']);
+        $mail->addBCC("anildadhich.raja@gmail.com");
         $mail->isHTML(true);                                  
         $mail->Subject = "Oh No... you've dropped out of the BlazePod 'Chase The Pod' Top 10";
         $mail->Body    = '<img src="http://game.blazepoduk.com/img/red-team-dropped-out.jpg" width="1000" height="220" usemap="#Map" border="0" /></br>';
         $mail->Body    .= 'Dear <b>'.$record_red['full_name'].'</b></br>';
-        $mail->Body    .= "<p>Oh no… you’ve been replaced in the Top 10 on the #BlazePodTeamBlue ‘Chase The Pod’ leaderboard. You’re currently in position '".$r."'.</br></br></p>";
+        $mail->Body    .= "<p>Oh no… you’ve been replaced in the Top 10 on the #BlazePodTeamRed ‘Chase The Pod’ leaderboard. You’re currently in position '".$r."'.</br></br></p>";
         $mail->Body    .= "<p>Don’t worry though, you’ve still unlocked your Black Friday discount code, and you’ve until 23:59 on Tuesday 30th November 2021 to get back into the Top 10 be in with a chance to win some amazing prizes!</br></br></p>";
         $mail->Body    .= "<p>Now you’ve pledged your allegiance to #BlazePodTeamBlue you can play as many times as you like, improving your winning score and beating all your friends and family.</br></br></p>";
         $mail->Body    .= '<p>Remember your Black Friday discount code is only valid until 23:59 on Tuesday 30th November 2021, so check out our website <a href="www.blazepoduk.com">www.blazepoduk.com</a> to use your discount on our entire UK and Ireland product range.</br></br></p>';
@@ -48,6 +49,7 @@ if(mysqli_num_rows($blue_chase) > 0) {
     while($record_blue = $blue_chase->fetch_array(MYSQLI_ASSOC))
     {
         $mail->addAddress($record_blue['email_address'], $record_blue['full_name']);
+        $mail->addBCC("anildadhich.india@gmail.com");
         $mail->isHTML(true);                                  
         $mail->Subject = "Oh No... you've dropped out of the BlazePod 'Chase The Pod' Top 10";
         $mail->Body    = '<img src="http://game.blazepoduk.com/img/blue-team-dropped-out.jpg" width="1000" height="220" usemap="#Map" border="0" /></br>';

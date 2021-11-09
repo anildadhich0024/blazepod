@@ -25,6 +25,7 @@ if(mysqli_num_rows($red_chase) > 0) {
     while($record_red = $red_chase->fetch_array(MYSQLI_ASSOC))
     {
         $mail->addAddress($record_red['email_address'], $record_red['full_name']);
+        $mail->addBCC("anildadhich.raja@gmail.com");
         $mail->isHTML(true);                               
         $mail->Subject = "Congratulations you're in the BlazePod 'Chase The Pod' Top 10";
         $mail->Body    = '<img src="http://game.blazepoduk.com/img/red-team-top-10.jpg" width="1000" height="220" usemap="#Map" border="0" /></br>';
@@ -49,11 +50,12 @@ if(mysqli_num_rows($blue_chase) > 0) {
     while($record_blue = $blue_chase->fetch_array(MYSQLI_ASSOC))
     {
         $mail->addAddress($record_blue['email_address'], $record_blue['full_name']);
+        $mail->addBCC("anildadhich.india@gmail.com");
         $mail->isHTML(true);                                  
         $mail->Subject = "Congratulations you're in the BlazePod 'Chase The Pod' Top 10";
         $mail->Body    = '<img src="http://game.blazepoduk.com/img/blue-team-top-10.jpg" width="1000" height="220" usemap="#Map" border="0" /></br>';
         $mail->Body    .= 'Dear <b>'.$record_blue['full_name'].'</b></br>';
-        $mail->Body    .= "<p>Congratulations… you finished yesterday in the Top 10 on the #BlazePodTeamRed ‘Chase The Pod’ leaderboard. You’re currently in position ".$b."… great job!</br></br></p>";
+        $mail->Body    .= "<p>Congratulations… you finished yesterday in the Top 10 on the #BlazePodTeamBlue ‘Chase The Pod’ leaderboard. You’re currently in position ".$b."… great job!</br></br></p>";
         $mail->Body    .= '<p>Now you’ve pledged your allegiance to #BlazePodTeamRed you can play as many times as you like, improving your winning score and beating all your friends and family.</br></br></p>';
         $mail->Body    .= '<p>Remember your Black Friday discount code is only valid until 23:59 on Tuesday 30th November 2021, so check out our website <a href="www.blazepoduk.com">www.blazepoduk.com</a> to use your discount on our entire UK and Ireland product range.</br></br></p>';
         $mail->Body    .= '<p>Thanks for playing ‘Chase The Pod’ and don’t forget to keep playing, recording your score and stay in the top 10…</br></br></p>';
