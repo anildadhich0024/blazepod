@@ -1,10 +1,11 @@
 <?php
 include('db.php');
 
-$start_date = !isset($_GET['game_date']) && empty($_GET['game_date']) ? date('Y-m-d') : $_GET['game_date'];
+$start_date = !isset($_GET['game_date']) || empty($_GET['game_date']) ? date('Y-m-d') : $_GET['game_date'];
 
-$start_date_time = !isset($_GET['game_date']) && empty($_GET['game_date']) ? date('Y-m-d 00:00:00') : $_GET['game_date'].' 00:00:00';
-$end_date_time = !isset($_GET['game_date']) && empty($_GET['game_date']) ? date('Y-m-d 23:59:59') : $_GET['game_date'].' 23:59:59';
+$start_date_time = !isset($_GET['game_date']) || empty($_GET['game_date']) ? date('Y-m-d 00:00:00') : $_GET['game_date'].' 00:00:00';
+$end_date_time = !isset($_GET['game_date']) || empty($_GET['game_date']) ? date('Y-m-d 23:59:59') : $_GET['game_date'].' 23:59:59';
+
 $red_all_parti = mysqli_fetch_array(mysqli_query($con, "SELECT SUM(total_users) AS total_users FROM start_game WHERE pod_name = 'RED' LIMIT 1"));
 $red_today_parti = mysqli_fetch_array(mysqli_query($con, "SELECT SUM(total_users) AS total_users FROM start_game WHERE pod_name = 'RED' AND game_date = '".$start_date."' LIMIT 1"));
 
