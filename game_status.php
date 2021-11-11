@@ -81,7 +81,7 @@ $blue_today_comp = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) AS ttl
         <div class="container all_over mt-2">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="game_status.php" method="GET">
+                    <form action="game_status" method="GET">
                         <input type="date" id="game_date" name="game_date" value="<?=$_GET['game_date']?>">
                         <input type="submit">
                         <button type="button" id="ClearFilter">Clear</button>
