@@ -17,6 +17,11 @@ $blue_today_parti = mysqli_fetch_array(mysqli_query($con, "SELECT SUM(total_user
 
 $blue_all_comp = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) AS ttl_users FROM user_submissions WHERE pod_name = 'BLUE' LIMIT 1"));
 $blue_today_comp = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) AS ttl_users FROM user_submissions WHERE pod_name = 'BLUE' AND created_at between '".$start_date_time."' AND '".$end_date_time."' LIMIT 1"));
+
+$yesterday_start_date = date('Y-m-d 00:00:00',strtotime("-1 days"));
+$yesterday_end_date = date('Y-m-d 23:59:59',strtotime("-1 days"));
+$yesterday_comp = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) AS ttl_users FROM user_submissions WHERE created_at between '".$yesterday_start_date."' AND '".$yesterday_end_date."' LIMIT 1"));
+$yesterday_parti = mysqli_fetch_array(mysqli_query($con, "SELECT SUM(total_users) AS total_users FROM start_game WHERE game_date = '".date('Y-m-d',strtotime("-1 days"))."' LIMIT 1"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,10 +112,10 @@ $blue_today_comp = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) AS ttl
                                 <label> Till now total game played partially: </label>  <span class="badge"><?=$red_all_parti['total_users'] - $red_all_comp['ttl_users']?></span>
                             </li>
                             <li class="list-group-item">
-                                <label> Today total game played completely::  </label>  <span class="badge"><?=empty($red_today_comp['ttl_users']) ? 0 : $red_today_comp['ttl_users']?></span>
+                                <label>Today total game played completely:  </label>  <span class="badge"><?=empty($red_today_comp['ttl_users']) ? 0 : $red_today_comp['ttl_users']?></span>
                             </li>
                             <li class="list-group-item">
-                                <label> Today total game played partially:  </label> <span class="badge"><?=$red_today_parti['total_users'] - $red_today_comp['ttl_users']?></span>
+                                <label>Today total game played partially:  </label> <span class="badge"><?=$red_today_parti['total_users'] - $red_today_comp['ttl_users']?></span>
                             </li>
                         </ul>
                     </div>
@@ -129,7 +134,7 @@ $blue_today_comp = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) AS ttl
                                 <label> Till now total game played partially: </label>  <span class="badge"><?=$blue_all_parti['total_users'] - $blue_all_comp['ttl_users']?></span>
                             </li>
                             <li class="list-group-item">
-                                <label> Today total game played completely::  </label>  <span class="badge"><?=empty($blue_today_comp['ttl_users']) ? 0 : $blue_today_comp['ttl_users']?></span>
+                                <label> Today total game played completely:  </label>  <span class="badge"><?=empty($blue_today_comp['ttl_users']) ? 0 : $blue_today_comp['ttl_users']?></span>
                             </li>
                             <li class="list-group-item">
                                 <label> Today total game played partially:  </label> <span class="badge"><?=$blue_today_parti['total_users'] - $blue_today_comp['ttl_users']?></span>
@@ -139,7 +144,7 @@ $blue_today_comp = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) AS ttl
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-md-12">
+                <div class="col-md-5">
                     <h3>Overall Status  </h3>
                     <div class="over_all">
                         <ul class="list-part">
@@ -153,10 +158,32 @@ $blue_today_comp = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) AS ttl
                                 <label> Till now total game played partially: </label>  <span class="badge"><?=($red_all_parti['total_users'] - $red_all_comp['ttl_users']) + ($blue_all_parti['total_users'] - $blue_all_comp['ttl_users'])?></span>
                             </li>
                             <li class="list-group-item">
-                                <label> Today total game played completely::  </label>  <span class="badge"><?=empty($red_today_comp['ttl_users']) && empty($blue_today_comp['ttl_users']) ? 0 : $red_today_comp['ttl_users'] + $blue_today_comp['ttl_users']?></span>
+                                <label> Today total game played completely:  </label>  <span class="badge"><?=empty($red_today_comp['ttl_users']) && empty($blue_today_comp['ttl_users']) ? 0 : $red_today_comp['ttl_users'] + $blue_today_comp['ttl_users']?></span>
                             </li>
                             <li class="list-group-item">
                                 <label> Today total game played partially:  </label> <span class="badge"><?=($red_today_parti['total_users'] - $red_today_comp['ttl_users']) + ($blue_today_parti['total_users'] - $blue_today_comp['ttl_users'])?></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h3>Yesterday Status  </h3>
+                    <div class="over_all">
+                        <ul class="list-part">
+                            <li class="list-group-item">
+                                <label>Till now total game played Partially + Completely: </label>  <span class="badge"><?= (($red_all_parti['total_users'] - $red_all_comp['ttl_users']) + $red_all_comp['ttl_users']) + (($blue_all_parti['total_users'] - $blue_all_comp['ttl_users']) + $blue_all_comp['ttl_users'])?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <label>Till now a total game played completely (Unique Email Addresses Collected):  </label>  <span class="badge"><?=empty($red_all_comp['ttl_users']) && empty($blue_all_comp['ttl_users']) ? 0 : $red_all_comp['ttl_users'] + $blue_all_comp['ttl_users']?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <label>Till now a total game played partially(Not Submitted details): </label>  <span class="badge"><?=($red_all_parti['total_users'] - $red_all_comp['ttl_users']) + ($blue_all_parti['total_users'] - $blue_all_comp['ttl_users'])?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <label>Yesterday total game played completely:  </label>  <span class="badge"><?=empty($yesterday_comp['ttl_users']) ? 0 : $yesterday_comp['ttl_users']?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <label>Yesterday total game played partially:  </label> <span class="badge"><?=$yesterday_parti['total_users'] - $yesterday_comp['ttl_users']?></span>
                             </li>
                         </ul>
                     </div>

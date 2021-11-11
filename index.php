@@ -349,7 +349,7 @@
                                     </h2>
                                     <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                         <div class="card-body">
-                                            <p>Visit our store at <a href="">www.blazepoduk.com</a> add your items to the shopping basket and user your discount code at the checkout stage</p>
+                                            <p>Visit our store at <a href="https://www.blazepoduk.com" target="_blank">www.blazepoduk.com</a> add your items to the shopping basket and user your discount code at the checkout stage</p>
                                         </div>
                                     </div>
                                 </div>
