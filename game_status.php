@@ -177,7 +177,7 @@ $yesterday_parti = mysqli_fetch_array(mysqli_query($con, "SELECT SUM(total_users
                                 <label>Till now a total game played completely (Unique Email Addresses Collected):  </label>  <span class="badge"><?=empty($red_all_comp['ttl_users']) && empty($blue_all_comp['ttl_users']) ? 0 : $red_all_comp['ttl_users'] + $blue_all_comp['ttl_users']?></span>
                             </li>
                             <li class="list-group-item">
-                                <label>Till now a total game played partially(Not Submitted details): </label>  <span class="badge"><?=($red_all_parti['total_users'] - $red_all_comp['ttl_users']) + ($blue_all_parti['total_users'] - $blue_all_comp['ttl_users'])?></span>
+                                <label>Till now a total game played partially (Not Submitted details): </label>  <span class="badge"><?=($red_all_parti['total_users'] - $red_all_comp['ttl_users']) + ($blue_all_parti['total_users'] - $blue_all_comp['ttl_users'])?></span>
                             </li>
                             <li class="list-group-item">
                                 <label>Yesterday total game played completely:  </label>  <span class="badge"><?=empty($yesterday_comp['ttl_users']) ? 0 : $yesterday_comp['ttl_users']?></span>
