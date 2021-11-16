@@ -20,23 +20,33 @@ $mail->Port       = 465;
 $mail->setFrom('noreply@blazepoduk.com', 'BlazePod');  
 
 // RED POD TOPPER EMAIL
+$sent_email_red = False;
 if(mysqli_num_rows($red_chase) > 0) {
     $r = 1;
     while($record_red = $red_chase->fetch_array(MYSQLI_ASSOC))
     {
-        $mail->addAddress($record_red['email_address'], $record_red['full_name']);
-        //$mail->addBCC("anildadhich.raja@gmail.com");
-        $mail->isHTML(true);                               
-        $mail->Subject = "Congratulations you're in the BlazePod 'Chase The Pod' Top 10";
-        $mail->Body    = '<img src="http://game.blazepoduk.com/img/red-team-top-10.jpg" width="1000" height="220" usemap="#Map" border="0" /></br>';
-        $mail->Body    .= 'Dear <b>'.$record_red['full_name'].'</b></br>';
-        $mail->Body    .= "<p>Congratulations... you finished yesterday in the Top 10 on the #BlazePodTeamRed 'Chase The Pod' leaderboard. You're currently in position ".$r."... great job!</br></br></p>";
-        $mail->Body    .= "<p>Now you've pledged your allegiance to #BlazePodTeamRed you can play as many times as you like, improving your winning score and beating all your friends and family.</br></br></p>";
-        $mail->Body    .= '<p>Remember your Black Friday discount code is only valid until 23:59 on Tuesday 30th November 2021, so check out our website <a href="www.blazepoduk.com">www.blazepoduk.com</a> to use your discount on our entire UK and Ireland product range.</br></br></p>';
-        $mail->Body    .= "<p>Thanks for playing 'Chase The Pod' and don't forget to keep playing, recording your score and stay in the top 10...</br></br></p>";
-        $mail->Body    .= '<b>BlazePod UK and Ireland</b>';
-        $mail->send();
-        $mail->clearAddresses();
+        if($record_red['accept_mail'] == 'DAILY') {
+            $sent_email_red = True;
+        } else {
+            if(date('D') == 'Mon') {
+                $sent_email_red = True;
+            }
+        }
+        if($sent_email_red) {
+            $mail->addAddress($record_red['email_address'], $record_red['full_name']);
+            //$mail->addBCC("anildadhich.raja@gmail.com");
+            $mail->isHTML(true);                               
+            $mail->Subject = "Congratulations you're in the BlazePod 'Chase The Pod' Top 10";
+            $mail->Body    = '<img src="http://game.blazepoduk.com/img/red-team-top-10.jpg" width="1000" height="220" usemap="#Map" border="0" /></br>';
+            $mail->Body    .= 'Dear <b>'.$record_red['full_name'].'</b></br>';
+            $mail->Body    .= "<p>Congratulations... you finished yesterday in the Top 10 on the #BlazePodTeamRed 'Chase The Pod' leaderboard. You're currently in position ".$r."... great job!</br></br></p>";
+            $mail->Body    .= "<p>Now you've pledged your allegiance to #BlazePodTeamRed you can play as many times as you like, improving your winning score and beating all your friends and family.</br></br></p>";
+            $mail->Body    .= '<p>Remember your Black Friday discount code is only valid until 23:59 on Tuesday 30th November 2021, so check out our website <a href="www.blazepoduk.com">www.blazepoduk.com</a> to use your discount on our entire UK and Ireland product range.</br></br></p>';
+            $mail->Body    .= "<p>Thanks for playing 'Chase The Pod' and don't forget to keep playing, recording your score and stay in the top 10...</br></br></p>";
+            $mail->Body    .= '<b>BlazePod UK and Ireland</b>';
+            $mail->send();
+            $mail->clearAddresses();
+        }
         $sql = mysqli_query($con, "INSERT INTO user_email (full_name, email_address, final_score, pod_name, last_click_time, created_at)
         VALUES ('".$record_red['full_name']."', '".$record_red['email_address']."', '".$record_red['final_score']."', '".$record_red['pod_name']."', '".$record_red['last_click_time']."', '".date('Y-m-d')."')");
         $r++;
@@ -45,23 +55,34 @@ if(mysqli_num_rows($red_chase) > 0) {
 
 
 // BLUE POD TOPPER EMAIL
+$sent_email_blue = False;
 if(mysqli_num_rows($blue_chase) > 0) {
     $b = 1;
     while($record_blue = $blue_chase->fetch_array(MYSQLI_ASSOC))
     {
-        $mail->addAddress($record_blue['email_address'], $record_blue['full_name']);
-        //$mail->addBCC("anildadhich.india@gmail.com");
-        $mail->isHTML(true);                                  
-        $mail->Subject = "Congratulations you're in the BlazePod 'Chase The Pod' Top 10";
-        $mail->Body    = '<img src="http://game.blazepoduk.com/img/blue-team-top-10.jpg" width="1000" height="220" usemap="#Map" border="0" /></br>';
-        $mail->Body    .= 'Dear <b>'.$record_blue['full_name'].'</b></br>';
-        $mail->Body    .= "<p>Congratulations... you finished yesterday in the Top 10 on the #BlazePodTeamBlue 'Chase The Pod' leaderboard. You're currently in position ".$b."... great job!</br></br></p>";
-        $mail->Body    .= "<p>Now you've pledged your allegiance to #BlazePodTeamRed you can play as many times as you like, improving your winning score and beating all your friends and family.</br></br></p>";
-        $mail->Body    .= '<p>Remember your Black Friday discount code is only valid until 23:59 on Tuesday 30th November 2021, so check out our website <a href="www.blazepoduk.com">www.blazepoduk.com</a> to use your discount on our entire UK and Ireland product range.</br></br></p>';
-        $mail->Body    .= "<p>Thanks for playing 'Chase The Pod' and don't forget to keep playing, recording your score and stay in the top 10...</br></br></p>";
-        $mail->Body    .= '<b>BlazePod UK and Ireland</b>';
-        $mail->send();
-        $mail->clearAddresses();
+        if($record_red['accept_mail'] == 'DAILY') {
+            $sent_email_blue = True;
+        } else {
+            if(date('D') == 'Mon') {
+                $sent_email_blue = True;
+            }
+        }
+
+        if($sent_email_blue) {
+            $mail->addAddress($record_blue['email_address'], $record_blue['full_name']);
+            //$mail->addBCC("anildadhich.india@gmail.com");
+            $mail->isHTML(true);                                  
+            $mail->Subject = "Congratulations you're in the BlazePod 'Chase The Pod' Top 10";
+            $mail->Body    = '<img src="http://game.blazepoduk.com/img/blue-team-top-10.jpg" width="1000" height="220" usemap="#Map" border="0" /></br>';
+            $mail->Body    .= 'Dear <b>'.$record_blue['full_name'].'</b></br>';
+            $mail->Body    .= "<p>Congratulations... you finished yesterday in the Top 10 on the #BlazePodTeamBlue 'Chase The Pod' leaderboard. You're currently in position ".$b."... great job!</br></br></p>";
+            $mail->Body    .= "<p>Now you've pledged your allegiance to #BlazePodTeamRed you can play as many times as you like, improving your winning score and beating all your friends and family.</br></br></p>";
+            $mail->Body    .= '<p>Remember your Black Friday discount code is only valid until 23:59 on Tuesday 30th November 2021, so check out our website <a href="www.blazepoduk.com">www.blazepoduk.com</a> to use your discount on our entire UK and Ireland product range.</br></br></p>';
+            $mail->Body    .= "<p>Thanks for playing 'Chase The Pod' and don't forget to keep playing, recording your score and stay in the top 10...</br></br></p>";
+            $mail->Body    .= '<b>BlazePod UK and Ireland</b>';
+            $mail->send();
+            $mail->clearAddresses();
+        }
         $sql = mysqli_query($con, "INSERT INTO user_email (full_name, email_address, final_score, pod_name, last_click_time, created_at)
         VALUES ('".$record_blue['full_name']."', '".$record_blue['email_address']."', '".$record_blue['final_score']."', '".$record_blue['pod_name']."', '".$record_blue['last_click_time']."', '".date('Y-m-d')."')");
         $b++;

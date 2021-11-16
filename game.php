@@ -187,7 +187,7 @@ session_unset();
             <div class="modal-content">
                 <div class="modal-body">
                     <h5 class="mb-4 text-left">
-                        <p>Congratulations you tapped out <span class="total_points"> </span> pods in <span class="last_click"> </span> seconds... you tapped out <span class="positive_points"></span> correctly coloured pods and <span class="neg_points"></span> of the wrong colour. Your final score is <span class="final_point"></span>.</p>
+                        <p>Congratulations you correctly tapped out <span class="final_point"> </span> pods in <span class="last_click"> </span> seconds (you tapped out <span class="positive_points"></span> pods in total and <span class="neg_points"></span> incorrect colour).</p>
                         <p>Enter your username and email address below to reveal your exclusive Black Friday discount code of up to 25%. Once you've submitted your details you can always play again and look to beat your score, just remember your username as you’ll need this to update your personal leaderboard score if you want to play again</p>
                         <p>If you're in the Top 10 for either the Red or Blue Leaderboards then you're in with a chance to win a heap of BlazePod prizes too!</p>
                         <p><small style="font-size:75%;">Your username will be seen on our leaderboard so don't include personal information you don't want to be seen by others. Usernames which are deemed offensive by the BlazePod team will be deleted.</small></p>
@@ -218,6 +218,12 @@ session_unset();
                                 <input type="checkbox" name="accept_condition" id="larget" value="Yes" class="form__radio-input">
                                     <label class="form__label-radio" for="larget">
                                     <span class="form__radio-button"></span> I wish to opt in to receive exciting email updates, news and offers from BlazePod UK and Ireland (You can unsubscribe from BlazePod emails at any time)
+                                </label>
+                            </div>
+                            <div class="form__radio-group mt-3">
+                                <input type="checkbox" name="accept_mail" id="larget_1" value="DAILY" class="form__radio-input">
+                                    <label class="form__label-radio" for="larget_1">
+                                    <span class="form__radio-button"></span> I wish to opt in to receive Top 10 email on daily basis
                                 </label>
                             </div>
                             <div class="row">

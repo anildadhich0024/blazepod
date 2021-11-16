@@ -270,12 +270,35 @@ function shuffle(array) {
 
 
 function makeBall(id, src, top = false) {
+	
+	
+	var checkWidth = screen.width;
+    var checkHeight = screen.height;
+	
+    
+    if( ( checkWidth <=319 ) || (checkHeight <=319 ) ) {
+    
+     var $div = $(
 
-    var $div = $(
+        "<div class='a' id='" + id + "'><img draggable='false' height='30' width='30' src='" + src + "' />"
+
+    );
+    
+    } else {
+        
+        
+          var $div = $(
 
         "<div class='a' id='" + id + "'><img draggable='false' height='150' width='150' src='" + src + "' />"
 
     );
+        
+        
+    }
+	
+	
+	
+   
 
     $(".animatedDivs").append($div);
 
