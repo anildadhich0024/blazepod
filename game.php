@@ -1,9 +1,16 @@
+<?php
+session_unset();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>BlazePod UK Game  | Flash Reflex Training System | UK and Ireland Official Site</title>
         
         <meta name="BlazePod UK Game" />
+       
+	   
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+		
         <meta name="title" content="BlazePod | Flash Reflex Training System | UK and Ireland Official Site"/>
         <meta name= "author" content="BlazePod UK">
 
@@ -32,7 +39,7 @@
             }
             @media (min-width: 576px){
             .modal-dialog {
-            max-width: 55%;
+            max-width: 95%;
             margin: 1.75rem auto;
             }
             }
@@ -56,27 +63,28 @@
             margin-top: 90px;
             }*/
             .modal-dialog.blaze_start .btn-success:active {
-            background: #0458b4;
-            border: #0458b4;
+            background: #00C1DE;
+            border: #00C1DE;
             }
             .modal-dialog.blaze_start .btn-success {
             color: #fff;
-            background-color: #0458b4;
-            border-color: #0458b4;
+            background-color: #00C1DE;
+            border-color: #00C1DE;
             width: 100%;
             margin-top: 15px;
             height: 50px;
             }
             .modal-dialog.blaze_start h5 {
-            color: #3c7256;
-            font-size: 18px;
-            line-height: 27px;
-            font-weight: 400;
-            text-align: center;
-            background: #d4edda;
-            padding: 15px;
-            border-radius: 15px;
-            font-family: "roboto";
+                font-size: 16px;
+        color: #00c1de;
+        text-align: center;
+        line-height: 37px;
+        text-align: left;
+        padding: 40px;
+        margin-bottom: 0;
+        border-radius: 15px;
+        background: rgb(0 0 32 / 70%);
+        font-family: 'Oswald', sans-serif;
             }
             .modal-dialog.blaze_start .modal-content {
             background: transparent;
@@ -154,6 +162,34 @@
             .form__radio-group.mt-3 {
             color: #fff;
             }
+            #exampleModal {
+                    padding-left: 0px !important;
+            }
+			
+			 @media screen and (max-width: 320px) {
+
+            .a img{
+                height: 50px !important;
+                width: 50px !important;
+            }
+            #finish{
+            	width: 150px;
+            	font-size: 17px;
+            	border-bottom: 5px solid #6c6c6c;
+				top: -70px;
+            }
+            div#finish img {
+			    width: 22px;
+			}
+            #timer {
+			    width: 120px;
+				font-size: 20px;
+				top: 18px;
+				padding: 2px 5px 2px 5px;
+			}
+
+            }
+
         </style>
     </head>
     <body style="background-color:black;">
@@ -167,212 +203,9 @@
                 <span id="seconds">00 </span> :
                 <span id="milliseconds">00</span>
             </div>
-            <!-- <div class="score">    Score: <span>0</span> </div> -->
         </div>
         <div class="animatedDivs"></div>
-        <!-- Modal -->
-        <!--  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-            
-            
-            
-            
-            
-            
-            
-            <div class="modal-content"> 
-            
-            
-            
-            
-            
-            
-            
-                <div class="modal-body">
-            
-            
-            
-            
-            
-            
-            
-                   <h5 class="mb-4">Thank you for participating, your score is <span class="scores"> </span></h5> 
-            
-            
-            
-            
-            
-            
-            
-                    <form method="post" action="post.php">
-            
-            
-            
-            
-            
-            
-            
-                        <input type="hidden" name="final_score" id="final_score" value="">
-            
-            
-            
-            
-            
-            
-            
-                        <input type="hidden" name="pod_name" id="pod_name" value="">
-            
-            
-            
-            
-            
-            
-            
-                        <input type="hidden" name="last_click_time" id="last_click_time" value="">
-            
-            
-            
-            
-            
-            
-            
-                        <div class="form-group">
-            
-            
-            
-            
-            
-            
-            
-                            <label for="inputName">Name</label>
-            
-            
-            
-            
-            
-            
-            
-                            <input type="text" class="form-control" required id="inputName" name="full_name" placeholder="Enter Name"> 
-            
-            
-            
-            
-            
-            
-            
-                          </div>
-            
-            
-            
-            
-            
-            
-            
-                          <div class="form-group">
-            
-            
-            
-            
-            
-            
-            
-                            <label for="inputEmail">Email address</label>
-            
-            
-            
-            
-            
-            
-            
-                            <input type="email" class="form-control" required id="inputEmail" name="email_address" placeholder="Enter email"> 
-            
-            
-            
-            
-            
-            
-            
-                          </div>
-            
-            
-            
-            
-            
-            
-            
-                          <div class="form-group">
-            
-            
-            
-            
-            
-            
-            
-                            <label for="inputPhone">Phone Number</label>
-            
-            
-            
-            
-            
-            
-            
-                            <input type="tel" pattern="[0-9]{10}" required title="10 digits required" name="mobile_number" class="form-control" id="inputPhone" placeholder="Enter Phone number"> 
-            
-            
-            
-            
-            
-            
-            
-                          </div>
-            
-            
-            
-            
-            
-            
-            
-                          <button class="btn btn-success" type="submit">Submit</button>
-            
-            
-            
-            
-            
-            
-            
-                    </form>
-            
-            
-            
-            
-            
-            
-            
-                </div> 
-            
-            
-            
-            
-            
-            
-            
-            </div>
-            
-            
-            
-            
-            
-            
-            
-            </div>
-            
-            
-            
-            
-            
-            
-            
-            </div> -->
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog blaze_start" role="document">
             <div id="finish">      
@@ -380,9 +213,11 @@
             </div>
             <div class="modal-content">
                 <div class="modal-body">
-                    <h5 class="mb-4">
-                        Congratulations you tapped <span class="total_points"> </span> pods in <span class="last_click"> </span> seconds. In that you tapped <span class="positive_points"></span> times on correct pod correct and <span class="neg_points"></span>  times on wrong pods. So your final total score is <span class="final_point"></span>. Enter your username and email address to reveal your exclusive <br> voucher code. We'll
-                        also enter you into our prize draw to win a FREE Blazepod Trainer Kit Deluxe Bundle.
+                    <h5 class="mb-4 text-left">
+                        <p>Congratulations you correctly tapped out <span class="final_point"> </span> pods in <span class="last_click"> </span> seconds (you tapped out <span class="positive_points"></span> pods in total and <span class="neg_points"></span> incorrect colour).</p>
+                        <p>Enter your username and email address below to reveal your exclusive Black Friday discount code of up to 25%. Once you've submitted your details you can always play again and look to beat your score, just remember your username as you’ll need this to update your personal leaderboard score if you want to play again</p>
+                        <p>If you're in the Top 10 for either the Red or Blue Leaderboards then you're in with a chance to win a heap of BlazePod prizes too!</p>
+                        <p><small style="font-size:75%;">Your username will be seen on our leaderboard so don't include personal information you don't want to be seen by others. Usernames which are deemed offensive by the BlazePod team will be deleted.</small></p>
                     </h5>
                     <form method="post" action="post.php" id="data_form">
                         <input type="hidden" name="total_points" id="total_points" value="">
@@ -391,12 +226,12 @@
                         <input type="hidden" name="positive_points" id="positive_points" value="">
                         <input type="hidden" name="pod_name" id="pod_name" value="">
                         <input type="hidden" name="last_click_time" id="last_click_time" value="">
-                        <div class="container">
+                        <div class="">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inputName">Full Name:</label>
-                                        <input type="text" class="form-control" required id="inputName" name="full_name" placeholder="User Name"> 
+                                        <label for="inputName">Username:</label>
+                                        <input type="text" class="form-control" required id="inputName" name="full_name" placeholder="Username"> 
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -406,38 +241,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="inputPhone">Phone Number</label>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                <input type="tel" pattern="[0-9]{10}" required title="10 digits required" name="mobile_number" class="form-control" id="inputPhone" placeholder="Enter Phone number"> 
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                </div> -->
                             <div class="form__radio-group mt-3">
-                                <!-- <input type="radio" name="size" id="larget" class="form__radio-input">
+                                <input type="checkbox" name="accept_condition" id="larget" value="Yes" class="form__radio-input">
                                     <label class="form__label-radio" for="larget">
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <span class="form__radio-button"></span>  -->I wish to opt in to receive email updates, news from Blazepod. ( You can unsubscribe from Blazepod emails  <br>at any time in the future).
+                                    <span class="form__radio-button"></span> I wish to opt in to receive exciting email updates, news and offers from BlazePod UK and Ireland (You can unsubscribe from BlazePod emails at any time)
                                 </label>
                             </div>
-                            <button class="btn btn-success" type="button">Submit</button>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-success" type="button">Submit</button>
+                            </div>
+                            <div class="col-md-6 ">
+                                <button class="btn btn-success" type="button" onclick="window.location='game'"><img src="assets/img/replay.svg" style="max-height: 25px;"> Play Again</button>
+                             </div>
+                         </div>
                     </form>
                     </div> 
                 </div>
@@ -499,19 +316,43 @@
                 }   
             
             });
+
+
+            document.onkeydown = function (event) {  
             
-            window.onload = function() {
-                var countDownDate = new Date("Nov 08, 2021 09:00:00 GMT+0200").getTime();
-                // Get today's date and time
-                var now = new Date().getTime();
-                    
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
-                if (distance >= 0) {
-                    window.location='index.php';
-                }
-            };
+            event = (event || window.event);  
+        
+            if (event.keyCode == 32) {  
+        
+                return false;  
+        
+            }  
+        
+        }  
+            
             
         </script>
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).keydown(function(event) {
+		    	if (event.ctrlKey==true && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
+			        // alert('disabling zooming'); 
+					event.preventDefault();
+			     }
+			});
+
+			document.addEventListener('wheel', function(e) {
+			    if (e.ctrlKey) {
+			        e.preventDefault();
+			    	e.stopPropagation();
+			    } 
+			}, {
+			    passive: false // Add this
+			});
+		});
+	</script>
+
+		
     </body>
 </html>

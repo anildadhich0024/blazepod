@@ -53,9 +53,9 @@ $(document).ready(function () {
 
         Swal.fire({
 
-            title: 'Be Ready to Play!',
+            title: 'Get Ready to Play!',
 
-            text: "Chase Blue ball",
+            text: "Chase the Blue Pod",
 
             icon: 'success',
 
@@ -103,9 +103,9 @@ $(document).ready(function () {
 
         Swal.fire({
 
-            title: 'Be Ready to Play!',
+            title: 'Get Ready to Play!',
 
-            text: "Chase Red ball",
+            text: "Chase the Red Pod",
 
             icon: 'success',
 
@@ -270,12 +270,35 @@ function shuffle(array) {
 
 
 function makeBall(id, src, top = false) {
+	
+	
+	var checkWidth = screen.width;
+    var checkHeight = screen.height;
+	
+    
+    if( ( checkWidth <=319 ) || (checkHeight <=319 ) ) {
+    
+     var $div = $(
 
-    var $div = $(
+        "<div class='a' id='" + id + "'><img draggable='false' height='30' width='30' src='" + src + "' />"
+
+    );
+    
+    } else {
+        
+        
+          var $div = $(
 
         "<div class='a' id='" + id + "'><img draggable='false' height='150' width='150' src='" + src + "' />"
 
     );
+        
+        
+    }
+	
+	
+	
+   
 
     $(".animatedDivs").append($div);
 
@@ -449,6 +472,14 @@ function startTimer() {
     timeObject = new Date(timeObject.getTime() + totalTime); 
     interval = setInterval(countdown,100);
 
+    $.ajax({
+        type: 'GET',
+        url: "https://game.blazepoduk.com/start_game.php?pod_name="+ballName,
+        // success:function(data){
+        //     alert(data);
+        // }
+    });
+
 };
 
 
@@ -461,6 +492,14 @@ $(document).ready(function(){
         if($("input[name=email_address]").val() == '') {
             alert("Please provide your email address");
             return false;
+        }
+        else
+        {
+            if(IsEmail($("input[name=email_address]").val())==false){
+                alert("Please provide your valid email address");
+                $("input[name=email_address]").focus();
+                return false;
+            }
         }      
 
         var total_points = NegScore + score;
@@ -472,7 +511,23 @@ $(document).ready(function(){
 
         $('#pod_name').val(btoa(ballName));
         $('#last_click_time').val(btoa(finalTime));
-
-        $('#data_form').submit();
+        
+        $.get("https://game.blazepoduk.com/check_email.php?email_address="+$("input[name=email_address]").val()+"&full_name="+$("input[name=full_name]").val()+"&pod_name="+ballName, function(data, status){
+            if(data != 'DONE') {
+                alert(data);
+                return false;
+            } else {
+                $('#data_form').submit();
+            }
+        });
     });
 });
+
+function IsEmail(email) {
+    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if(!regex.test(email)) {
+      return false;
+    }else{
+      return true;
+    }
+}
