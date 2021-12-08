@@ -8,32 +8,32 @@ if ($con -> connect_errno) {
   exit();
 } 
 
-$email_status = !empty($_POST['accept_mail']) ? 'DAILY' : 'WEEKLY';
 $code_array = array( "1"=>"BF15", "2"=>"CHASE20", "3"=>"GAME25");
 $code_key = array_rand($code_array);
 $code_name = $code_array[$code_key];
 $mail_status = false;
+$final_score = base64_decode($_POST['final_point']) > 70 ? 70 : base64_decode($_POST['final_point']);
 
 $record = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM user_submissions WHERE email_address = '".trim($_POST['email_address'])."' AND full_name = '".str_replace(' ', '', trim($_POST['full_name']))."' AND pod_name = '".base64_decode($_POST['pod_name'])."'"));
 if(empty($record))
 {
   $mail_status = true;
-  $sql = mysqli_query($con, "INSERT INTO user_submissions (full_name, email_address, total_points, positive_points, neg_points, final_score, pod_name, last_click_time, accept_condition, code_name, accept_mail)
-  VALUES ('".str_replace(' ', '', trim($_POST['full_name']))."', '".trim($_POST['email_address'])."', '".base64_decode($_POST['total_points'])."', '".base64_decode($_POST['positive_points'])."', '".base64_decode($_POST['neg_points'])."', '".base64_decode($_POST['final_point'])."', '".base64_decode($_POST['pod_name'])."', '".base64_decode($_POST['last_click_time'])."', '".$_POST['accept_condition']."', '".$code_name."', '".$email_status."')");
+  $sql = mysqli_query($con, "INSERT INTO user_submissions (full_name, email_address, total_points, positive_points, neg_points, final_score, pod_name, last_click_time, accept_condition, code_name)
+  VALUES ('".str_replace(' ', '', trim($_POST['full_name']))."', '".trim($_POST['email_address'])."', '".base64_decode($_POST['total_points'])."', '".base64_decode($_POST['positive_points'])."', '".base64_decode($_POST['neg_points'])."', '".$final_score."', '".base64_decode($_POST['pod_name'])."', '".base64_decode($_POST['last_click_time'])."', '".$_POST['accept_condition']."', '".$code_name."')");
 }
 else
 {
-  if(base64_decode($_POST['final_point']) > $record['final_score'])
+  if($final_score > $record['final_score'])
   {
     $mail_status = true;
-    $sql = mysqli_query($con, "UPDATE user_submissions set total_points = '".base64_decode($_POST['total_points'])."', positive_points = '".base64_decode($_POST['positive_points'])."', neg_points = '".base64_decode($_POST['neg_points'])."', final_score = '".base64_decode($_POST['final_point'])."', last_click_time = '".base64_decode($_POST['last_click_time'])."', code_name = '".$code_name."', accept_condition = '".$_POST['accept_condition']."', accept_mail = '".$email_status."' WHERE user_id = '".$record['user_id']."'");
+    $sql = mysqli_query($con, "UPDATE user_submissions set total_points = '".base64_decode($_POST['total_points'])."', positive_points = '".base64_decode($_POST['positive_points'])."', neg_points = '".base64_decode($_POST['neg_points'])."', final_score = '".$final_score."', last_click_time = '".base64_decode($_POST['last_click_time'])."', code_name = '".$code_name."', accept_condition = '".$_POST['accept_condition']."' WHERE user_id = '".$record['user_id']."'");
   }
-  if(base64_decode($_POST['final_point']) == $record['final_score'])
+  if($final_score == $record['final_score'])
   {
     if(strtotime(base64_decode($_POST['last_click_time'])) < strtotime($record['last_click_time']))
     {
       $mail_status = true;
-      $sql = mysqli_query($con, "UPDATE user_submissions set total_points = '".base64_decode($_POST['total_points'])."', positive_points = '".base64_decode($_POST['positive_points'])."', neg_points = '".base64_decode($_POST['neg_points'])."', final_score = '".base64_decode($_POST['final_point'])."', last_click_time = '".base64_decode($_POST['last_click_time'])."', code_name = '".$code_name."', accept_condition = '".$_POST['accept_condition']."', accept_mail = '".$email_status."' WHERE user_id = '".$record['user_id']."'");
+      $sql = mysqli_query($con, "UPDATE user_submissions set total_points = '".base64_decode($_POST['total_points'])."', positive_points = '".base64_decode($_POST['positive_points'])."', neg_points = '".base64_decode($_POST['neg_points'])."', final_score = '".$final_score."', last_click_time = '".base64_decode($_POST['last_click_time'])."', code_name = '".$code_name."', accept_condition = '".$_POST['accept_condition']."' WHERE user_id = '".$record['user_id']."'");
     }
   }
 }
@@ -68,8 +68,10 @@ if($mail_status)
   curl_setopt($ch, CURLOPT_NOBODY,1);
   curl_exec($ch);
   curl_close($ch);
-  echo '<script>window.location.href= "result"</script>';
+  $_SESSION["game_status"] = base64_encode('SUCCESS');
+} else {
+  $_SESSION["game_status"] = base64_encode('FAIL');
 }
-echo '<script>window.location.href= "index"</script>';
+echo '<script>window.location.href= "result"</script>';
 
 ?>

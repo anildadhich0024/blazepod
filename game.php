@@ -7,7 +7,10 @@ session_unset();
         <title>BlazePod UK Game  | Flash Reflex Training System | UK and Ireland Official Site</title>
         
         <meta name="BlazePod UK Game" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+	   
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+		
         <meta name="title" content="BlazePod | Flash Reflex Training System | UK and Ireland Official Site"/>
         <meta name= "author" content="BlazePod UK">
 
@@ -162,6 +165,30 @@ session_unset();
             #exampleModal {
                     padding-left: 0px !important;
             }
+			
+			 @media screen and (max-width: 320px) {
+
+            .a img{
+                height: 50px !important;
+                width: 50px !important;
+            }
+            #finish{
+            	width: 150px;
+            	font-size: 17px;
+            	border-bottom: 5px solid #6c6c6c;
+				top: -70px;
+            }
+            div#finish img {
+			    width: 22px;
+			}
+            #timer {
+			    width: 120px;
+				font-size: 20px;
+				top: 18px;
+				padding: 2px 5px 2px 5px;
+			}
+
+            }
 
         </style>
     </head>
@@ -218,12 +245,6 @@ session_unset();
                                 <input type="checkbox" name="accept_condition" id="larget" value="Yes" class="form__radio-input">
                                     <label class="form__label-radio" for="larget">
                                     <span class="form__radio-button"></span> I wish to opt in to receive exciting email updates, news and offers from BlazePod UK and Ireland (You can unsubscribe from BlazePod emails at any time)
-                                </label>
-                            </div>
-                            <div class="form__radio-group mt-3">
-                                <input type="checkbox" name="accept_mail" id="larget_1" value="DAILY" class="form__radio-input">
-                                    <label class="form__label-radio" for="larget_1">
-                                    <span class="form__radio-button"></span> I wish to opt in to receive Top 10 email on daily basis
                                 </label>
                             </div>
                             <div class="row">
@@ -311,5 +332,27 @@ session_unset();
             
             
         </script>
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).keydown(function(event) {
+		    	if (event.ctrlKey==true && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
+			        // alert('disabling zooming'); 
+					event.preventDefault();
+			     }
+			});
+
+			document.addEventListener('wheel', function(e) {
+			    if (e.ctrlKey) {
+			        e.preventDefault();
+			    	e.stopPropagation();
+			    } 
+			}, {
+			    passive: false // Add this
+			});
+		});
+	</script>
+
+		
     </body>
 </html>

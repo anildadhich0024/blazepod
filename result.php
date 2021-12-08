@@ -1,7 +1,8 @@
 <?php
 include('db.php');
-$pod_name  = base64_decode($_SESSION['pod_name']);
-$code_name = base64_decode($_SESSION['code_name']);
+$pod_name       = base64_decode($_SESSION['pod_name']);
+$code_name      = base64_decode($_SESSION['code_name']);
+$game_status    = base64_decode($_SESSION['game_status']);
 if((($pod_name != 'RED' || $pod_name != 'BLUE') && !isset($_SESSION['pod_name'])) && (($code_name != 'BF15' || $code_name != 'CHASE20' || $code_name != 'GAME25') && !isset($_SESSION['code_name'])))
 {
     echo '<script>window.location.href= "leaderboard"</script>';
@@ -82,28 +83,72 @@ $record_list  = $con->query("Select *, final_score AS score from user_submission
          <div class="p-0 tbls-btn">
             <div class="row">
                <div class="col-md-12">
-                  <p>
-                    Congratulations you’ve won a Discount Voucher which can be used on all BlazePod kits, bundles and accessories! Your exclusive voucher code is <b class="ccode"><?=$code_name?></b> and expires at 23:59 on Tuesday 30th November 2021. <br>
-                    Remember, you can play the game as many times as you want, each time you play you’ll get another entry into our prize draw! The more times you play the more chances you have to win! In order for your score to be updated on the leaderboard please make sure you use the same username and email address.<br><br>
-                    <span>You’ll receive a confirmation email confirming the first voucher code you won, further entries won’t result in additional emails so if you win a different voucher code, please write this down! We will notify you by email if you are the lucky winner or if you’re top of the leaderboard at 23:59 on Tuesday 30th November 2021.</span>
-                  </p>
+                  <?php
+                  if($game_status == 'SUCCESS') {
+                  ?>
+                    <p>
+                        Congratulations you’ve won a Discount Voucher which can be used on all BlazePod kits, bundles and accessories! Your exclusive voucher code is <b class="ccode"><?=$code_name?></b> and expires at 23:59 on Tuesday 30th November 2021. <br>
+                        Remember, you can play the game as many times as you want, each time you play you’ll get another entry into our prize draw! The more times you play the more chances you have to win! In order for your score to be updated on the leaderboard please make sure you use the same username and email address.<br><br>
+                        <span>You’ll receive a confirmation email confirming the first voucher code you won, further entries won’t result in additional emails so if you win a different voucher code, please write this down! We will notify you by email if you are the lucky winner or if you’re top of the leaderboard at 23:59 on Tuesday 30th November 2021.</span>
+                    </p>
+                <?php } else { ?>
+                    <p>Thank You for completing our Chase The Pod Black Friday game, you didn't beat your previous highest score... try again and if you beat it you'll be awarded another voucher code of either 15%, 20% or 25%... keep playing and beating your score to unlock the top value code!</p>
+                <?php } ?>
                </div>
             </div>
             <div class="row">
                 <?php
-                if($pod_name == 'RED')
-                {
-                ?>
-                    <div class="col-md-12 text-center mt-5">
+                    if($game_status == 'SUCCESS') {
+                    ?>
+                    <?php
+                    if($pod_name == 'RED')
+                    {
+                    ?>
+                        <div class="col-md-12 text-center mt-5">
+                            <div class="tbl-bg tableFixHead">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Position</th>
+                                            <th>User</th>
+                                            <th>Score</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $i = 1;
+                                            while($record = $record_list->fetch_array(MYSQLI_ASSOC))
+                                            {
+                                        ?>
+                                            <tr>&nbsp;</tr>
+                                            <tr>
+                                                <td><?=$i?></td>
+                                                <td><?=$record['full_name']?></td>
+                                                <td><?=$record['final_score']?></td>
+                                                <td><?=$record['last_click_time']?></td>
+                                            </tr>
+                                        <?php
+                                            $i++;
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                    <div class="col-md-12 text-center wt-blu mt-5">
                         <div class="tbl-bg tableFixHead">
                             <table>
                                 <thead>
-                                    <tr>
-                                        <th>Position</th>
-                                        <th>User</th>
-                                        <th>Score</th>
-                                        <th>Time</th>
-                                    </tr>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>User</th>
+                                    <th>Score</th>
+                                    <th>Time</th>
+                                </tr>
                                 </thead>
                                 <tbody>
                                     <?php
@@ -126,43 +171,11 @@ $record_list  = $con->query("Select *, final_score AS score from user_submission
                             </table>
                         </div>
                     </div>
+                    <?php
+                    }
+                    ?>
                 <?php
-                } else {
-                ?>
-                <div class="col-md-12 text-center wt-blu mt-5">
-                  <div class="tbl-bg tableFixHead">
-                     <table>
-                        <thead>
-                           <tr>
-                              <th>Position</th>
-                              <th>User</th>
-                              <th>Score</th>
-                              <th>Time</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                $i = 1;
-                                while($record = $record_list->fetch_array(MYSQLI_ASSOC))
-                                {
-                            ?>
-                                <tr>&nbsp;</tr>
-                                <tr>
-                                    <td><?=$i?></td>
-                                    <td><?=$record['full_name']?></td>
-                                    <td><?=$record['final_score']?></td>
-                                    <td><?=$record['last_click_time']?></td>
-                                </tr>
-                            <?php
-                                $i++;
-                                }
-                            ?>
-                        </tbody>
-                     </table>
-                  </div>
-                </div>
-                <?php
-                }
+                    }
                 ?>
                <div class="col-md-12">
                   <div class="row">
